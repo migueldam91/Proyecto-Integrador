@@ -162,16 +162,15 @@ public class MainActivity extends AppCompatActivity {
                         if (mMediaUri == null) {
                             Toast.makeText(MainActivity.this, "error en el almacenamiento", Toast.LENGTH_SHORT).show();
                         } else {
-                            takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT,
+                            takePhotoIntent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT,
                                     mMediaUri);
-                            takePhotoIntent.putExtra("return-data",true);
+                            //takePhotoIntent.putExtra("return-data", true);
                         }
                         startActivityForResult(takePhotoIntent, TAKE_PHOTO_REQUEST);
                         break;
                     case 1:
                         Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                         mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
-                        mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
                         if (mMediaUri == null) {
                             Toast.makeText(MainActivity.this, "error en el almacenamiento", Toast.LENGTH_SHORT).show();
                         } else {
@@ -185,13 +184,11 @@ public class MainActivity extends AppCompatActivity {
                     case 2:
                         Intent choosePhotoIntent = new Intent(Intent.ACTION_GET_CONTENT);
                         choosePhotoIntent.setType("image/*");
-                        //mMediaUri=getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
                         startActivityForResult(choosePhotoIntent, PICK_PHOTO_REQUEST);
                         break;
                     case 3:
                         Intent chooseVideoIntent = new Intent(Intent.ACTION_GET_CONTENT);
                         chooseVideoIntent.setType("video/*");
-                        //mMediaUri=getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
                         startActivityForResult(chooseVideoIntent, PICK_VIDEO_REQUEST);
                         Toast.makeText(MainActivity.this, "Tamaño max 10MBs", Toast.LENGTH_SHORT).show();
                         break;
@@ -208,53 +205,58 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        //Todo va bien
         if (resultCode == RESULT_OK) {
-            if (data != null) {
-                mMediaUri = data.getData();
-                if (requestCode == PICK_PHOTO_REQUEST) {
+            //comprueba que tipo de info
+            if (requestCode == PICK_PHOTO_REQUEST) {
+                if (data != null) {
+                    mMediaUri = data.getData();
                     generateDialog(mMediaUri.toString()).show();
-                } else if (requestCode == PICK_VIDEO_REQUEST) {
+                }
+            } else if (requestCode == PICK_VIDEO_REQUEST) {
+                //recoge los datos procesados en el video.
+                if (data != null) {
+                    mMediaUri = data.getData();
                     generateDialog(mMediaUri.toString()).show();
-                    int fileSize=0;
-                    InputStream inputStream = null;
-                    try {
-                        inputStream = getContentResolver().openInputStream(mMediaUri);
-                        //assert asegura que inputStream no sea nulo
-                        assert inputStream != null;
-                        fileSize = inputStream.available();
+                }
+                int fileSize = 0;
+                InputStream inputStream = null;
+                try {
+                    inputStream = getContentResolver().openInputStream(mMediaUri);
+                    //assert asegura que inputStream no sea nulo
+                    assert inputStream != null;
+                    fileSize = inputStream.available();
+                    if (!checkIfSizeCorrect(fileSize)) {
+                        Toast.makeText(MainActivity.this, "Video was added", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "Video not added. Max 10MB", Toast.LENGTH_SHORT).show();
+                        mMediaUri = null;
+                    }
 
-                        if (!checkIfSizeCorrect(fileSize)) {
-                            Toast.makeText(MainActivity.this, "Video was added", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(MainActivity.this, "Video not added. Max 10MB", Toast.LENGTH_SHORT).show();
-                            mMediaUri = null;
-                        }
-
-
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {assert inputStream != null;
+                        inputStream.close();
                     } catch (IOException e) {
                         e.printStackTrace();
-                    } finally {
-                        try {
-                            assert inputStream != null;
-                            inputStream.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
                     }
-                } else {
-                    Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                    mediaScanIntent.setData(mMediaUri);
-                    generateDialog(mMediaUri.toString()).show();
-                    sendBroadcast(mediaScanIntent);
                 }
-
+            //else para guardar la foto o el video en la galeria
             } else {
-                //Log.d("Fallo intent camara", "el usuario no ha salido de la cámara");
-                generateDialog(getResources().getString(R.string.camera_left_warning)).show();
+                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                mediaScanIntent.setData(mMediaUri);
+                sendBroadcast(mediaScanIntent);
+                generateDialog(mMediaUri.toString()).show();
             }
 
+        } else {
+            //Log.d("Fallo intent camara", "el usuario no ha salido de la cámara");
+            generateDialog(getResources().getString(R.string.camera_left_warning)).show();
         }
+
     }
+
 
     /**
      * A placeholder fragment containing a simple view.
@@ -291,23 +293,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*public static File getOutputMediaFile(int type) {
-        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "chatgo");
-        if (!mediaStorageDir.exists()) {
-            if (!mediaStorageDir.mkdirs()) {
-                Log.d("GoChat", "Foto no creada ");
-                return null;
-            }
-        }
-        return mediaStorageDir;
-    }*/
 
     private Uri getOutputMediaFileUri(int mediaType) {
-        //falta parte 3
         if (isExternalStorageAvailable()) {
             switch (mediaType) {
                 case MEDIA_TYPE_IMAGE:
-                    mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), appname);
+                    mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), appname + " photos");
                     break;
                 case MEDIA_TYPE_VIDEO:
                     mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES), appname + " videos");
