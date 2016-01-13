@@ -1,19 +1,15 @@
 package miguel.chatgo;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
@@ -27,15 +23,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.parse.Parse;
 import com.parse.ParseUser;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
-import java.nio.channels.NotYetBoundException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -136,10 +128,21 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    private android.support.v7.app.AlertDialog generateDialog(String error) {
+        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(MainActivity.this);
+        builder.setTitle(error)
+                .setMessage(error)
+                .setPositiveButton(android.R.string.ok, null);
+        android.support.v7.app.AlertDialog dialog = builder.create();
+        return dialog;
+
+    }
+
     private android.support.v7.app.AlertDialog dialogCameraChoices() {
         android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(MainActivity.this);
         String[] options = getResources().getStringArray(R.array.camera_choices);
-        builder.setTitle(R.string.editFriendsErrorTitle)
+        builder.setTitle(R.string.menu_choose_option_label)
                 .setItems(options, mDialogListener())
                 .setPositiveButton(android.R.string.ok, null);
         android.support.v7.app.AlertDialog dialog = builder.create();
@@ -161,12 +164,14 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT,
                                     mMediaUri);
+                            takePhotoIntent.putExtra("return-data",true);
                         }
                         startActivityForResult(takePhotoIntent, TAKE_PHOTO_REQUEST);
                         break;
                     case 1:
                         Intent takeVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
                         mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
+                        mMediaUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
                         if (mMediaUri == null) {
                             Toast.makeText(MainActivity.this, "error en el almacenamiento", Toast.LENGTH_SHORT).show();
                         } else {
@@ -204,51 +209,51 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if (requestCode == PICK_PHOTO_REQUEST) {
-                if (data != null) {
-                    mMediaUri = data.getData();
-                } else {
-                    Log.e("Error data null", "Error data null");
-                }
-            } else if (requestCode == PICK_VIDEO_REQUEST) {
-                if (data != null) {
-                    mMediaUri = data.getData();
-                    int fileSize = -1;
+            if (data != null) {
+                mMediaUri = data.getData();
+                if (requestCode == PICK_PHOTO_REQUEST) {
+                    generateDialog(mMediaUri.toString()).show();
+                } else if (requestCode == PICK_VIDEO_REQUEST) {
+                    generateDialog(mMediaUri.toString()).show();
+                    int fileSize=0;
                     InputStream inputStream = null;
                     try {
                         inputStream = getContentResolver().openInputStream(mMediaUri);
-                        //assert inputStream != null;
+                        //assert asegura que inputStream no sea nulo
+                        assert inputStream != null;
                         fileSize = inputStream.available();
-                        if (fileSize > FILE_SIZE_LIMIT) {
+
+                        if (!checkIfSizeCorrect(fileSize)) {
+                            Toast.makeText(MainActivity.this, "Video was added", Toast.LENGTH_SHORT).show();
+                        } else {
                             Toast.makeText(MainActivity.this, "Video not added. Max 10MB", Toast.LENGTH_SHORT).show();
                             mMediaUri = null;
-                        }else{
-                            Toast.makeText(MainActivity.this, "Video was added", Toast.LENGTH_SHORT).show();
                         }
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
+
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     } finally {
                         try {
+                            assert inputStream != null;
                             inputStream.close();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                     }
                 } else {
-                    Log.e("Error data null", "Error data null");
+                    Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                    mediaScanIntent.setData(mMediaUri);
+                    generateDialog(mMediaUri.toString()).show();
+                    sendBroadcast(mediaScanIntent);
                 }
+
             } else {
-                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                mediaScanIntent.setData(mMediaUri);
-                sendBroadcast(mediaScanIntent);
+                //Log.d("Fallo intent camara", "el usuario no ha salido de la cámara");
+                generateDialog(getResources().getString(R.string.camera_left_warning)).show();
             }
-        } else {
-            Log.d("Fallo intent camara", "No se ha  guardado la foto por algun motivo");
+
         }
-
-
     }
 
     /**
@@ -286,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static File getOutputMediaFile(int type) {
+    /*public static File getOutputMediaFile(int type) {
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "chatgo");
         if (!mediaStorageDir.exists()) {
             if (!mediaStorageDir.mkdirs()) {
@@ -295,14 +300,14 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return mediaStorageDir;
-    }
+    }*/
 
     private Uri getOutputMediaFileUri(int mediaType) {
         //falta parte 3
         if (isExternalStorageAvailable()) {
             switch (mediaType) {
                 case MEDIA_TYPE_IMAGE:
-                    mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), appname + " photos");
+                    mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), appname);
                     break;
                 case MEDIA_TYPE_VIDEO:
                     mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES), appname + " videos");
@@ -341,4 +346,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public boolean checkIfSizeCorrect(int fileSize) {
+        if (fileSize > FILE_SIZE_LIMIT)
+            return true;
+        return false;
+    }
 }

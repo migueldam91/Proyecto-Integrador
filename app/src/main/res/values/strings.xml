@@ -29,11 +29,13 @@
     <string name="title_activity_edit_friends">EditFriendsActivity</string>
 
     <!-- Errores -->
-
     <string name="editFriendsErrorTitle">Error en la carga de tus amigos, por favor inténtelo de nuevo.</string>
-    <string name="menu_camera_label">camera</string>
 
-    <!-- -->
+
+    <!-- Icono camara-->
+    <string name="menu_camera_label">Cámara</string>
+    <string name="menu_choose_option_label">Selecciona una opción</string>
+
     <string-array name="camera_choices">
         <item>Haz una foto</item>
         <item>Haz un video</item>
@@ -41,6 +43,8 @@
         <item>Elige un video</item>
     </string-array>
 
+    <!-- Advertencias camaras-->
+    <string name="camera_left_warning">No se guardó la captura</string>
 
 
 </resources>
