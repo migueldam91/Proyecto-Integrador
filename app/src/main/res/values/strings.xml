@@ -31,6 +31,16 @@
     <!-- Errores -->
 
     <string name="editFriendsErrorTitle">Error en la carga de tus amigos, por favor inténtelo de nuevo.</string>
+    <string name="menu_camera_label">camera</string>
+
+    <!-- -->
+    <string-array name="camera_choices">
+        <item>Haz una foto</item>
+        <item>Haz un video</item>
+        <item>Elige una foto</item>
+        <item>Elige un video</item>
+    </string-array>
+
 
 
 </resources>
