@@ -1,9 +1,20 @@
 <resources>
-    <string name="app_name">Chatgo</string>
+    <string name="app_name">GO chat</string>
+    <string name="app_subtitle">lorem ipsum</string>
+
     <string name="logout_menuItem">Log out</string>
+    <string name="friends_menuItem">Friends</string>
+
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
+
+    <!-- Valores de tabs -->
+    <string name="title_messages_tab">Mensajes</string>
+    <string name="title_friends_tab">Amigos</string>
+
+    <string name="empty_Inbox_Label">No hay nuevos mensajes</string>
+    <string name="empty_Friends_Label">Añade amigos para empezar</string>
 
 
     <string name="username_hint">Nombre de usuario</string>
@@ -15,8 +26,20 @@
 
     <string name="Login_button_label">Ingresar</string>
     <string name="sign_up_button_label">Registrar</string>
+    <string name="title_activity_edit_friends">EditFriendsActivity</string>
 
+    <!-- Errores -->
 
+    <string name="editFriendsErrorTitle">Error en la carga de tus amigos, por favor inténtelo de nuevo.</string>
+    <string name="menu_camera_label">camera</string>
+
+    <!-- -->
+    <string-array name="camera_choices">
+        <item>Haz una foto</item>
+        <item>Haz un video</item>
+        <item>Elige una foto</item>
+        <item>Elige un video</item>
+    </string-array>
 
 
 
