@@ -4,68 +4,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorPrimaryDark"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="miguel.chatgo.SignUpActivity"
     tools:showIn="@layout/activity_sign_up">
 
-    <EditText
+    <TextView
+        style="@style/titles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/signupTitle"
+        android:textSize="48sp"
+        android:id="@+id/titleSignup"
+        />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/usernameField"
-        android:hint="@string/username_hint"
-        android:layout_alignParentTop="true"
+        android:text="@string/signupSubtitle"
+        android:textSize="24sp"
+        android:id="@+id/subtitleSignup"
+        android:layout_below="@+id/titleSignup"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+         />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/authLayoutContainer"
+        android:layout_below="@+id/subtitleSignup"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"
+        android:background="@color/colorPrimary20">
+    <LinearLayout
+        style="@style/AuthFieldContainer"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/signUpLayout"
+        android:layout_marginTop="15dp"
+
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentEnd="true">
+        <EditText
+            style="@style/EditTextAuthFieldContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/usernameField"
+            android:hint="@string/username_hint"
+            />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/passwordField"
-        android:hint="@string/password_hint"
-        android:layout_below="@+id/usernameField"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/usernameField"
-        android:layout_alignEnd="@+id/usernameField" />
+        <EditText
+            style="@style/EditTextAuthFieldContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/passwordField"
+            android:hint="@string/password_hint"
+            />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/emailField"
-        android:hint="@string/email_hint"
-        android:layout_below="@+id/passwordField"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/passwordField"
-        android:layout_alignEnd="@+id/passwordField" />
+        <EditText
+            style="@style/EditTextAuthFieldContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/emailField"
+            android:hint="@string/email_hint"
+            />
+    </LinearLayout>
 
     <Button
-        android:layout_width="wrap_content"
+        style="@style/buttonsAuth"
+        android:background="@drawable/button_custom"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sign_up_button_label"
-        android:id="@+id/button2"
+        android:id="@+id/signupButton"
         android:onClick="registrarse"
-        android:layout_below="@+id/emailField"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/emailField"
-        android:layout_alignEnd="@+id/emailField" />
-
+        android:layout_below="@+id/signUpLayout"
+        android:layout_centerHorizontal="true" />
+    </RelativeLayout>
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/authLayoutContainer"
+        android:layout_alignRight="@+id/subtitleSignup"
+        android:layout_alignEnd="@+id/subtitleSignup" />
+
+
+
+
 </RelativeLayout>

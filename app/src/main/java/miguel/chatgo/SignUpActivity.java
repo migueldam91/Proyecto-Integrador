@@ -3,6 +3,7 @@ package miguel.chatgo;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -42,6 +43,12 @@ public class SignUpActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
         emailField = (EditText) findViewById(R.id.emailField);
+
+        Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "Lighthouse_PersonalUse.ttf");
+        usernameField.setTypeface(font);
+        passwordField.setTypeface(font);
+        emailField.setTypeface(font);
+
     }
 
     public void registrarse(View v) {

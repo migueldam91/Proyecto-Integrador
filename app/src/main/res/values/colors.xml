@@ -12,6 +12,7 @@
 -->
 
     <color name="colorPrimary">#200400</color>
+    <color name="colorPrimary20">#200400</color>
     <color name="colorPrimaryDark">#0E0908</color>
     <color name="colorPrimaryLight">#A9632F</color>
     <color name="colorAccent">#F39541</color>
