@@ -219,7 +219,8 @@ public class MainActivity extends AppCompatActivity {
                     mMediaUri = data.getData();
                     generateDialog(mMediaUri.toString()).show();
                 }
-                int fileSize = 0;
+                checkSize(mMediaUri);
+                /*int fileSize = 0;
                 InputStream inputStream = null;
                 try {
                     inputStream = getContentResolver().openInputStream(mMediaUri);
@@ -241,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                }
+                }*/
             //else para guardar la foto o el video en la galeria
             } else {
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
@@ -257,6 +258,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void checkSize(Uri mMediaUri){
+        int fileSize = 0;
+        InputStream inputStream = null;
+        try {
+            inputStream = getContentResolver().openInputStream(mMediaUri);
+            //assert asegura que inputStream no sea nulo
+            assert inputStream != null;
+            fileSize = inputStream.available();
+            if (!checkIfSizeCorrect(fileSize)) {
+                Toast.makeText(MainActivity.this, "Video was added", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(MainActivity.this, "Video not added. Max 10MB", Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {assert inputStream != null;
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     /**
      * A placeholder fragment containing a simple view.

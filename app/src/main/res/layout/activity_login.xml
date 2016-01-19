@@ -10,15 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/backgroundImage"
-        android:src="@drawable/backgroundgochat"
+        android:background="@color/colorPrimaryDark"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:scaleType="fitStart"
         android:contentDescription="logoChat"/>
-
+    <!--android:src="@drawable/backgroundgochat"-->
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:id="@+id/title"
@@ -28,7 +28,7 @@
         android:textSize="60sp"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        />
+        android:gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,48 +40,65 @@
         android:textColor="@android:color/white"
         android:textStyle="bold"/>
 
-
-    <EditText
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:id="@+id/apploginEdittext"
         android:layout_height="wrap_content"
-        android:id="@+id/usernameField"
-        android:hint="@string/username_hint"
-        android:textColor="@color/colorSelect"
-        android:textColorHint="@color/colorSelect"
         android:layout_below="@+id/subtitle"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:gravity="center" />
+        android:layout_centerHorizontal="true"
+        style="@style/AuthFieldContainer"
+        android:paddingLeft="15dp">
+        <EditText
+            android:layout_width="match_parent"
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/passwordField"
-        android:hint="@string/password_hint"
-        android:textColor="@color/colorSelect"
-        android:textColorHint="@color/colorSelect"
-        android:layout_below="@+id/usernameField"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:gravity="center" />
+            android:layout_height="wrap_content"
+            android:id="@+id/usernameField"
+            android:hint="@string/username_hint"
+            android:textColor="@color/colorSelect"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:layout_below="@+id/subtitle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/passwordField"
+            android:hint="@string/password_hint"
+            android:textColor="@color/colorSelect"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:layout_below="@+id/usernameField"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center" />
+    </LinearLayout>
+
+
 
     <Button
-        android:layout_width="wrap_content"
+        style="?android:attr/borderlessButtonStyle"
+        android:background="@drawable/button_custom"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Login_button_label"
         android:id="@+id/button"
         android:onClick="logearse"
-        android:layout_below="@+id/passwordField"
+        android:layout_marginLeft="@dimen/activityHorizontalMargin"
+        android:layout_marginRight="@dimen/activityHorizontalMargin"
+        android:layout_below="@+id/apploginEdittext"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sign_up_text"
+        android:textColor="@color/colorAccent"
         android:id="@+id/signUpText"
         android:onClick="signUpOnClick"
         android:clickable="true"
@@ -94,9 +111,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressBarLogin"
-        android:layout_alignBottom="@+id/signUpText"
-        android:layout_alignLeft="@+id/signUpText"
-        android:layout_alignStart="@+id/signUpText" />
+        android:layout_below="@+id/apploginEdittext"
+        android:layout_alignLeft="@+id/subtitle"
+        android:layout_alignStart="@+id/subtitle" />
 
 
 

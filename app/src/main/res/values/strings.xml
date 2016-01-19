@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GO chat</string>
+    <string name="app_name">Chocolat</string>
     <string name="app_subtitle">lorem ipsum</string>
 
     <string name="logout_menuItem">Log out</string>
@@ -24,7 +24,7 @@
 
     <string name="sign_up_text">¡Registrate!</string>
 
-    <string name="Login_button_label">Ingresar</string>
+    <string name="Login_button_label">Entrar!</string>
     <string name="sign_up_button_label">Registrar</string>
     <string name="title_activity_edit_friends">EditFriendsActivity</string>
 
