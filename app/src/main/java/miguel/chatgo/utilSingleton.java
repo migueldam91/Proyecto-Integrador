@@ -6,20 +6,19 @@ import android.util.Log;
 
 import com.parse.ParseUser;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Miguel on 1/20/2016.
  */
-public class UtilSingleton {
-    private static UtilSingleton UtilSingleton;
+public class utilSingleton {
+    private static utilSingleton UtilSingleton;
 
-    private UtilSingleton(){}
+    private utilSingleton(){}
 
-    public static UtilSingleton getInstance(){
+    public static utilSingleton getInstance(){
         if(UtilSingleton ==null)
-            UtilSingleton =new UtilSingleton();
+            UtilSingleton =new utilSingleton();
 
         return UtilSingleton;
     }

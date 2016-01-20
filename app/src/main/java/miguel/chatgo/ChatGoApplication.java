@@ -14,7 +14,7 @@ public class ChatGoApplication extends Application {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this);
 
-        UtilSingleton utilSingleton = UtilSingleton.getInstance();
+        utilSingleton utilSingleton = miguel.chatgo.utilSingleton.getInstance();
 
 
         /*ParseObject testObject = new ParseObject("TestObject");

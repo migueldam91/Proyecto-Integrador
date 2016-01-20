@@ -228,7 +228,9 @@ public class MainActivity extends AppCompatActivity {
                 generateDialog(mMediaUri.toString()).show();
             }
 
-
+        Intent recipientsActivityIntent = new Intent(MainActivity.this,RecipientsActivity.class);
+            recipientsActivityIntent.setData(mMediaUri);
+            startActivity(recipientsActivityIntent);
 
 
         } else {

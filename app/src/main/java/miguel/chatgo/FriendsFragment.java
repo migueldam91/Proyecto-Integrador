@@ -2,7 +2,6 @@ package miguel.chatgo;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,7 @@ import java.util.List;
  * Created by Miguel on 1/8/2016.
  */
 public class FriendsFragment extends ListFragment{
-    UtilSingleton utilidades=UtilSingleton.getInstance();
+    utilSingleton utilidades= utilSingleton.getInstance();
     ParseUser mCurrentUser;
     ParseRelation<ParseUser> mFriendsRelation;
     List<ParseUser> mUsers;

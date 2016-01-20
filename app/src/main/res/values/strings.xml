@@ -39,6 +39,7 @@
     <!-- Icono camara-->
     <string name="menu_camera_label">Cámara</string>
     <string name="menu_choose_option_label">Selecciona una opción</string>
+    <string name="menu_send">Enviar</string>
 
     <string-array name="camera_choices">
         <item>Haz una foto</item>
@@ -49,7 +50,8 @@
 
     <!-- Advertencias camaras-->
     <string name="camera_left_warning">No se guardó la captura</string>
-    <string name="title_activity_recipients">RecipientsActivity</string>
+    <string name="title_activity_recipients">Enviar a</string>
+    <string name="title_activity_recipients2">RecipientsActivity2</string>
 
 
 </resources>
