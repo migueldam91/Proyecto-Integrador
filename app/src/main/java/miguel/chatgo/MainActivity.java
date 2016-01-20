@@ -198,7 +198,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
-
         return dialogListener;
     }
 
@@ -220,29 +219,7 @@ public class MainActivity extends AppCompatActivity {
                     generateDialog(mMediaUri.toString()).show();
                 }
                 checkSize(mMediaUri);
-                /*int fileSize = 0;
-                InputStream inputStream = null;
-                try {
-                    inputStream = getContentResolver().openInputStream(mMediaUri);
-                    //assert asegura que inputStream no sea nulo
-                    assert inputStream != null;
-                    fileSize = inputStream.available();
-                    if (!checkIfSizeCorrect(fileSize)) {
-                        Toast.makeText(MainActivity.this, "Video was added", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(MainActivity.this, "Video not added. Max 10MB", Toast.LENGTH_SHORT).show();
-                        mMediaUri = null;
-                    }
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } finally {
-                    try {assert inputStream != null;
-                        inputStream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }*/
             //else para guardar la foto o el video en la galeria
             } else {
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
@@ -250,6 +227,9 @@ public class MainActivity extends AppCompatActivity {
                 sendBroadcast(mediaScanIntent);
                 generateDialog(mMediaUri.toString()).show();
             }
+
+
+
 
         } else {
             //Log.d("Fallo intent camara", "el usuario no ha salido de la cámara");
@@ -267,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
             //assert asegura que inputStream no sea nulo
             assert inputStream != null;
             fileSize = inputStream.available();
-            if (!checkIfSizeCorrect(fileSize)) {
+            if (checkIfSizeCorrect(fileSize)) {
                 Toast.makeText(MainActivity.this, "Video was added", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(MainActivity.this, "Video not added. Max 10MB", Toast.LENGTH_SHORT).show();
@@ -365,7 +345,8 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean checkIfSizeCorrect(int fileSize) {
         if (fileSize > FILE_SIZE_LIMIT)
+            return false;
+        else
             return true;
-        return false;
     }
 }
