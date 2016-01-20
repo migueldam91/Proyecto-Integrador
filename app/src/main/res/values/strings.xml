@@ -49,7 +49,7 @@
 
     <!-- Advertencias camaras-->
     <string name="camera_left_warning">No se guardó la captura</string>
-
+    <string name="title_activity_recipients">RecipientsActivity</string>
 
 
 </resources>

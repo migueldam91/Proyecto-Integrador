@@ -22,12 +22,14 @@ import java.util.List;
  * Created by Miguel on 1/8/2016.
  */
 public class FriendsFragment extends ListFragment{
+    UtilSingleton utilidades=UtilSingleton.getInstance();
     ParseUser mCurrentUser;
     ParseRelation<ParseUser> mFriendsRelation;
     List<ParseUser> mUsers;
     String [] usernames;
     ProgressBar progressBar;
     TextView addFriends_Textview;
+
 
 
     @Override
@@ -63,7 +65,8 @@ public class FriendsFragment extends ListFragment{
                 if (e == null) {
                     mUsers = objects;
                     usernames = new String[objects.size()];
-                    copyUsernamesIntoStringArray(usernames);
+                    //copyUsernamesIntoStringArray(usernames);
+                    utilidades.copyUsernamesIntoStringArray(usernames,mUsers);
                     progressBar.setVisibility(View.GONE);
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                             getListView().getContext(),
@@ -73,7 +76,7 @@ public class FriendsFragment extends ListFragment{
                     if(mUsers.size()!=0)
                         addFriends_Textview.setVisibility(View.INVISIBLE);
                 } else {
-                    generateDialog(e.getMessage()).show();
+                    utilidades.generateDialog(e.getMessage(),getListView().getContext()).show();
 
                 }
             }
@@ -83,19 +86,19 @@ public class FriendsFragment extends ListFragment{
 
     }
 
-    protected void copyUsernamesIntoStringArray(String [] usernames){
-        int i =0 ;
-        for (ParseUser user : mUsers){
-            usernames[i]=user.getUsername();
-            i++;
-        }
-    }
-    protected AlertDialog generateDialog(String message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getListView().getContext());
-        builder.setTitle(R.string.editFriendsErrorTitle)
-                .setMessage(message)
-                .setPositiveButton(android.R.string.ok, null);
-        AlertDialog dialog = builder.create();
-        return dialog;
-    }
+//    protected void copyUsernamesIntoStringArray(String [] usernames){
+//        int i =0 ;
+//        for (ParseUser user : mUsers){
+//            usernames[i]=user.getUsername();
+//            i++;
+//        }
+//    }
+//    protected AlertDialog generateDialog(String message){
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getListView().getContext());
+//        builder.setTitle(R.string.editFriendsErrorTitle)
+//                .setMessage(message)
+//                .setPositiveButton(android.R.string.ok, null);
+//        AlertDialog dialog = builder.create();
+//        return dialog;
+//    }
 }
