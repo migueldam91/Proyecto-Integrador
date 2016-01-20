@@ -17,6 +17,8 @@ import com.parse.ParseUser;
 
 import java.util.List;
 
+import miguel.chatgo.Utils.utilSingleton;
+
 /**
  * Created by Miguel on 1/8/2016.
  */

@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.Parse;
 import com.parse.ParseUser;
 
 import java.io.File;
@@ -33,6 +34,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+
 
     private static int TAKE_PHOTO_REQUEST = 0;
     private static int TAKE_VIDEO_REQUEST = 1;
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     String appname;
     File mediaStorageDir;
     Uri mMediaUri;
+    String fileType="";
+
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -220,28 +224,34 @@ public class MainActivity extends AppCompatActivity {
                 }
                 checkSize(mMediaUri);
 
-            //else para guardar la foto o el video en la galeria
-            } else {
+            } else if (requestCode == TAKE_VIDEO_REQUEST) {
+                fileType=ParseConstants.TYPE_VIDEO;
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                mediaScanIntent.setData(mMediaUri);
+//                mediaScanIntent.putExtra(ParseConstants.KEY_FILETYPE, fileType);
+//                mediaScanIntent.setData(mMediaUri);
+                sendBroadcast(mediaScanIntent);
+                generateDialog(mMediaUri.toString()).show();
+            } else {
+                fileType= ParseConstants.TYPE_IMAGE;
+                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                 sendBroadcast(mediaScanIntent);
                 generateDialog(mMediaUri.toString()).show();
             }
 
-        Intent recipientsActivityIntent = new Intent(MainActivity.this,RecipientsActivity.class);
+            Intent recipientsActivityIntent = new Intent(MainActivity.this, RecipientsActivity.class);
+            recipientsActivityIntent.putExtra(ParseConstants.KEY_FILETYPE,fileType);
             recipientsActivityIntent.setData(mMediaUri);
             startActivity(recipientsActivityIntent);
 
 
         } else {
-            //Log.d("Fallo intent camara", "el usuario no ha salido de la cámara");
             generateDialog(getResources().getString(R.string.camera_left_warning)).show();
         }
 
     }
 
 
-    public void checkSize(Uri mMediaUri){
+    public void checkSize(Uri mMediaUri) {
         int fileSize = 0;
         InputStream inputStream = null;
         try {
@@ -258,7 +268,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            try {assert inputStream != null;
+            try {
+                assert inputStream != null;
                 inputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
