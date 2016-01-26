@@ -223,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
                     generateDialog(mMediaUri.toString()).show();
                 }
             } else if (requestCode == PICK_VIDEO_REQUEST) {
+                fileType=ParseConstants.TYPE_VIDEO;
                 //recoge los datos procesados en el video.
                 if (data != null) {
                     mMediaUri = data.getData();
@@ -233,11 +234,9 @@ public class MainActivity extends AppCompatActivity {
             } else if (requestCode == TAKE_VIDEO_REQUEST) {
                 fileType=ParseConstants.TYPE_VIDEO;
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-//                mediaScanIntent.putExtra(ParseConstants.KEY_FILETYPE, fileType);
-//                mediaScanIntent.setData(mMediaUri);
                 sendBroadcast(mediaScanIntent);
                 generateDialog(mMediaUri.toString()).show();
-            } else {
+            } else if (requestCode== TAKE_PHOTO_REQUEST){
                 fileType= ParseConstants.TYPE_IMAGE;
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                 sendBroadcast(mediaScanIntent);
@@ -246,6 +245,7 @@ public class MainActivity extends AppCompatActivity {
 
             Intent recipientsActivityIntent = new Intent(MainActivity.this, RecipientsActivity.class);
             recipientsActivityIntent.putExtra(ParseConstants.KEY_FILETYPE,fileType);
+           // recipientsActivityIntent.putExtra(ParseConstants.KEY_FILENAME);
             recipientsActivityIntent.setData(mMediaUri);
             startActivity(recipientsActivityIntent);
 

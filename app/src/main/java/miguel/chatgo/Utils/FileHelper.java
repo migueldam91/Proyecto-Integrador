@@ -28,7 +28,7 @@ public class FileHelper {
         byte[] fileBytes = null;// array de bytes
         InputStream inStream = null; // flujo de entrada
         ByteArrayOutputStream outStream = null; // flujo de salida
-
+        //MediaStore(and General)
         if (uri.getScheme().equals("content")) {
             try {
                 inStream = context.getContentResolver().openInputStream(uri);
@@ -55,15 +55,20 @@ public class FileHelper {
             }
         }
         else {
-            FileInputStream fileInput=null;
+            FileInputStream fileInput = null;
             try {
                 File file = new File(uri.getPath());
                 fileInput = new FileInputStream(file);
                 fileBytes = IOUtils.toByteArray(fileInput);
             }
             catch (IOException e) {
+                if(fileInput!=null)
+                    try {
+                        fileInput.close();
+                    } catch (IOException e1) {  }
                 Log.e(TAG, e.getMessage());
-            }finally{
+            }
+            finally{
                 try {
                     fileInput.close();
                 } catch (IOException e) {

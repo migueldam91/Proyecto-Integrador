@@ -56,6 +56,8 @@ public class RecipientsActivity extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.recipientsList);
         progressBar.setVisibility(View.GONE);
         intent = getIntent();
+        mMediaUri=getIntent().getData();
+        //fileType=getIntent().getExtras().getString(ParseConstants.KEY_FILETYPE);
         //mFriendsRelation=mCurrentUser.getRelation(ParseConstants.KEY_FRIENDS_RELATION);
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -125,17 +127,28 @@ public class RecipientsActivity extends AppCompatActivity {
         message.put(ParseConstants.KEY_SENDERID, ParseUser.getCurrentUser().getObjectId());
         message.put(ParseConstants.KEY_SENDERNAME, ParseUser.getCurrentUser().getUsername());
         message.put(ParseConstants.KEY_RECIPIENTSID, getRecipientsIds());
+        //
 
+
+        fileType=getIntent().getExtras().getString(ParseConstants.KEY_FILETYPE);
         AbstractMap.SimpleEntry fileInfo = new AbstractMap.SimpleEntry(fileType, mMediaUri);
-        byte[] fileBytesArray = FileHelper.getByteArrayFromFile(this, (Uri) fileInfo.getValue());
-        String fileName=FileHelper.getFileName(this,mMediaUri,String.valueOf(fileInfo.getKey()));
-        if (fileBytesArray != null) {
-            fileBytesArray=FileHelper.reduceImageForUpload(fileBytesArray);
-        }else{
-            fileBytesArray=null;
+
+        String fileName=FileHelper.getFileName(this, mMediaUri, String.valueOf(fileInfo.getKey()));
+        byte[] fileBytesArray = FileHelper.getByteArrayFromFile(this, mMediaUri);
+        if(fileType.equals(ParseConstants.TYPE_IMAGE)){
+
+            if (fileBytesArray != null) {
+                fileBytesArray=FileHelper.reduceImageForUpload(fileBytesArray);
+            }else{
+                fileBytesArray=null;
+            }
         }
+
         ParseFile file = new ParseFile(fileName,fileBytesArray);
-        message.put(ParseConstants.KEY_FILETYPE, fileName);
+        message.put(ParseConstants.KEY_FILETYPE, fileType);
+        //message.put(ParseConstants.KEY_FILETYPE, fileName);
+        message.put(ParseConstants.KEY_FILENAME,fileName);
+
         message.put(ParseConstants.KEY_FILE, file);
 
         return message;
@@ -150,9 +163,6 @@ public class RecipientsActivity extends AppCompatActivity {
                 recipientsIds.add(recipientId);
             }
         }
-
-        //recipientsIds.add()
-
         return recipientsIds;
     }
 
