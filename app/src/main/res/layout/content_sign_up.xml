@@ -11,39 +11,27 @@
 
     <TextView
         style="@style/titles"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="@string/signupTitle"
         android:textSize="48sp"
-        android:id="@+id/titleSignup"
-        />
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/Subtitle"
         android:text="@string/signupSubtitle"
-        android:textSize="24sp"
-        android:id="@+id/subtitleSignup"
-        android:layout_below="@+id/titleSignup"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/white"
+        android:id="@+id/subtitle"
          />
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/authLayoutContainer"
-        android:layout_below="@+id/subtitleSignup"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:padding="10dp"
-        android:background="@color/colorPrimary20">
+        android:layout_below="@+id/subtitle"
+        style="@style/authLayoutContainer">
     <LinearLayout
         style="@style/AuthFieldContainer"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/signUpLayout"
+        android:id="@+id/authLayout"
         android:layout_marginTop="15dp"
 
         android:layout_alignParentRight="true"
@@ -76,28 +64,46 @@
             android:hint="@string/email_hint"
             />
     </LinearLayout>
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonDivider"
+            android:visibility="invisible"
+            android:src="@drawable/button_divider"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/authLayout"
+            />
     <Button
-        style="@style/buttonsAuth"
-        android:background="@drawable/button_custom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/ButtonAuth"
         android:text="@string/sign_up_button_label"
-        android:id="@+id/signupButton"
+        android:id="@+id/actionButton"
         android:onClick="registrarse"
-        android:layout_below="@+id/signUpLayout"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@id/buttonDivider"
+        android:layout_toEndOf="@id/buttonDivider"
+        android:layout_alignRight="@+id/authLayout"
+        android:layout_alignEnd="@+id/authLayout" />
+
+        <Button
+            style="@style/ButtonAuth"
+            android:text="@string/buttonCancel"
+            android:id="@+id/buttonCancel"
+            android:onClick="terminar"
+            android:layout_toLeftOf="@id/buttonDivider"
+            android:layout_toStartOf="@id/buttonDivider"
+            android:layout_alignLeft="@+id/authLayout"
+            android:layout_alignStart="@+id/authLayout" />
+
+
     </RelativeLayout>
+
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
         android:layout_below="@+id/authLayoutContainer"
-        android:layout_alignRight="@+id/subtitleSignup"
-        android:layout_alignEnd="@+id/subtitleSignup" />
-
-
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp" />
 
 
 </RelativeLayout>

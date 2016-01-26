@@ -69,10 +69,8 @@
         android:id="@+id/actionButton"
         android:onClick="logearse"
         android:layout_alignTop="@+id/progressBarLogin"
-        android:layout_alignLeft="@+id/authLayoutContainer"
-        android:layout_alignStart="@+id/authLayoutContainer"
-        android:layout_alignRight="@+id/authLayoutContainer"
-        android:layout_alignEnd="@+id/authLayoutContainer" />
+        android:layout_alignLeft="@+id/progressBarLogin"
+        android:layout_alignStart="@+id/progressBarLogin" />
 <!--
  style="?android:attr/borderlessButtonStyle"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
@@ -98,8 +96,7 @@
         android:id="@+id/progressBarLogin"
         android:layout_below="@+id/authLayoutContainer"
         android:layout_alignRight="@+id/subtitle"
-        android:layout_alignEnd="@+id/subtitle"
-        android:indeterminate="false" />
+        android:layout_alignEnd="@+id/subtitle" />
 
 
 

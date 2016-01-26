@@ -52,6 +52,11 @@
     <string name="camera_left_warning">No se guardó la captura</string>
     <string name="title_activity_recipients">Enviar a</string>
     <string name="title_activity_recipients2">RecipientsActivity2</string>
+    <string name="title_activity_splash">SplashActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="buttonCancel">Cancelar</string>
 
 
 </resources>

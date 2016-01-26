@@ -2,6 +2,7 @@ package miguel.chatgo;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -82,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         //Posible error en MainActivity this, podria ser getApplicationContext()
@@ -93,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_tab_inbox);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_tab_friends);
+        tabLayout.setTabTextColors(Color.WHITE,Color.WHITE);
         appname = MainActivity.this.getString(R.string.app_name);
     }
 

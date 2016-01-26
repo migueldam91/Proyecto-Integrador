@@ -7,29 +7,18 @@
         <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:tabWidgetStyle">@android:style/Widget.TabWidget</item>
     </style>-->
 
     <!--Themes-->
-    <style name="AppTheme" parent="@style/_PruebaMarrones"/>
+    <!--<style name="AppTheme" parent="@style/_PruebaMarrones"/>-->
 
-    <style name="_PruebaMarrones" parent="Theme.AppCompat.Light.DarkActionBar">
 
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
-        <item name="android:editTextStyle">@style/EditTextPruebaMarrones</item>
-
-        <item name="android:textColorHighlight">#99714e0a</item>
-
-        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewPruebaMarrones</item>
-
-        <!--<item name="android:buttonStyle">@style/ButtonPruebaMarrones</item>-->
-
-        <item name="android:imageButtonStyle">@style/ImageButtonPruebaMarrones</item>
-
-    </style>
-
+        <item name="android:tabWidgetStyle">@android:style/Widget.TabWidget</item></style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">true</item>
@@ -65,13 +54,6 @@
         <item name="android:layout_marginTop">32dp</item>
     </style>
 
-    <style name="buttonsAuth">
-        <!--<attr name="borderlessButtonStyle" format="reference" />-->
-        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
-        <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
-
-    </style>
-
     <style name="EditTextAuthFieldContainer">
         <item name="android:textColor">@color/colorPrimary20</item>
         <item name="android:textColorHint">@color/colorPrimaryDark</item>
@@ -100,5 +82,34 @@
         <item name="android:background">@drawable/pruebamarrones_btn_default_holo_light</item>
     </style>
 
+    <style name="authLayoutContainer">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@color/colorPrimary20</item>
+    </style>
+
+    <style name="Subtitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@+id/title</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ButtonAuth">
+        <item name="android:background">@drawable/button_custom</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_below">@+id/authLayout</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+
+    </style>
+    <!--<item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
+    <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>-->
 
 </resources>
