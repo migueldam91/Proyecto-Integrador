@@ -36,7 +36,6 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private static int TAKE_PHOTO_REQUEST = 0;
     private static int TAKE_VIDEO_REQUEST = 1;
     private static int PICK_PHOTO_REQUEST = 2;
@@ -44,12 +43,13 @@ public class MainActivity extends AppCompatActivity {
     final public static int MEDIA_TYPE_IMAGE = 4;
     final public static int MEDIA_TYPE_VIDEO = 5;
 
-    public static int FILE_SIZE_LIMIT = 10240;
+    //10 MBs en bytes
+    public static int FILE_SIZE_LIMIT = 1048576;
 
     String appname;
     File mediaStorageDir;
     Uri mMediaUri;
-    String fileType="";
+    String fileType = "";
 
 
     /**
@@ -96,11 +96,19 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-        tabLayout.getTabAt(0).setIcon(R.drawable.ic_tab_inbox);
-        tabLayout.getTabAt(1).setIcon(R.drawable.ic_tab_friends);
-        tabLayout.setTabTextColors(Color.WHITE,Color.WHITE);
+        if (tabLayout.getTabCount() > 0) {
+            tabLayout.getTabAt(0).setIcon(R.drawable.ic_tab_inbox);
+            tabLayout.getTabAt(1).setIcon(R.drawable.ic_tab_friends);
+            tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
+        }
+
         appname = MainActivity.this.getString(R.string.app_name);
     }
+
+
+    /**
+     * A placeholder fragment containing a simple view.
+     */
 
 
     @Override
@@ -109,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -136,6 +145,152 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //Todo va bien
+        if (resultCode == RESULT_OK) {
+            //comprueba que tipo de info
+            if (requestCode == PICK_PHOTO_REQUEST) {
+                if (data != null) {
+                    mMediaUri = data.getData();
+                    generateDialog(mMediaUri.toString()).show();
+                }
+            } else if (requestCode == PICK_VIDEO_REQUEST) {
+                fileType = ParseConstants.TYPE_VIDEO;
+                //recoge los datos procesados en el video.
+                if (data != null) {
+                    mMediaUri = data.getData();
+                    generateDialog(mMediaUri.toString()).show();
+                }
+                checkSize(mMediaUri);
+
+            } else if (requestCode == TAKE_VIDEO_REQUEST) {
+                fileType = ParseConstants.TYPE_VIDEO;
+                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                sendBroadcast(mediaScanIntent);
+                generateDialog(mMediaUri.toString()).show();
+            } else if (requestCode == TAKE_PHOTO_REQUEST) {
+                fileType = ParseConstants.TYPE_IMAGE;
+                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                sendBroadcast(mediaScanIntent);
+                generateDialog(mMediaUri.toString()).show();
+            }
+
+            Intent recipientsActivityIntent = new Intent(MainActivity.this, RecipientsActivity.class);
+            recipientsActivityIntent.putExtra(ParseConstants.KEY_FILETYPE, fileType);
+            // recipientsActivityIntent.putExtra(ParseConstants.KEY_FILENAME);
+            recipientsActivityIntent.setData(mMediaUri);
+            startActivity(recipientsActivityIntent);
+
+
+        } else {
+            generateDialog(getResources().getString(R.string.camera_left_warning)).show();
+        }
+
+    }
+
+    public void checkSize(Uri mMediaUri) {
+        int fileSize = 0;
+        InputStream inputStream = null;
+        try {
+            inputStream = getContentResolver().openInputStream(mMediaUri);
+            //assert asegura que inputStream no sea nulo
+            assert inputStream != null;
+            fileSize = inputStream.available();
+            if (checkIfSizeCorrect(fileSize)) {
+                Toast.makeText(MainActivity.this, "Video was added", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(MainActivity.this, "Video not added. Max 10MB", Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                assert inputStream != null;
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public boolean checkIfSizeCorrect(int fileSize) {
+        if (fileSize > FILE_SIZE_LIMIT)
+            return false;
+        else
+            return true;
+    }
+
+    public static class PlaceholderFragment extends Fragment {
+
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public PlaceholderFragment() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static PlaceholderFragment newInstance(int sectionNumber) {
+            PlaceholderFragment fragment = new PlaceholderFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            return rootView;
+        }
+
+
+    }
+
+    private Uri getOutputMediaFileUri(int mediaType) {
+        if (isExternalStorageAvailable()) {
+            switch (mediaType) {
+                case MEDIA_TYPE_IMAGE:
+                    mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), appname + " photos");
+                    break;
+                case MEDIA_TYPE_VIDEO:
+                    mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES), appname + " videos");
+                    break;
+            }
+            if (!mediaStorageDir.exists()) {
+                if (!mediaStorageDir.mkdirs()) {
+                    Log.d("GoChat", "Foto no creada ");
+                    return null;
+                }
+            }
+        } else {
+            Toast.makeText(MainActivity.this, "Introduce memoria SD", Toast.LENGTH_SHORT).show();
+        }
+
+        File mediaFile;
+        Date now = new Date();
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss", new Locale("es", "ES")).format(now);
+        String path = mediaStorageDir.getPath() + File.separator;
+        if (mediaType == MEDIA_TYPE_IMAGE) {
+            mediaFile = new File(path + "IMG_" + timestamp + ".jpg");
+        } else if (mediaType == MEDIA_TYPE_VIDEO) {
+            mediaFile = new File(path + "VID_" + timestamp + ".mp4");
+        } else {
+            return null;
+        }
+
+        return Uri.fromFile(mediaFile);
     }
 
 
@@ -211,161 +366,13 @@ public class MainActivity extends AppCompatActivity {
         return dialogListener;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        //Todo va bien
-        if (resultCode == RESULT_OK) {
-            //comprueba que tipo de info
-            if (requestCode == PICK_PHOTO_REQUEST) {
-                if (data != null) {
-                    mMediaUri = data.getData();
-                    generateDialog(mMediaUri.toString()).show();
-                }
-            } else if (requestCode == PICK_VIDEO_REQUEST) {
-                fileType=ParseConstants.TYPE_VIDEO;
-                //recoge los datos procesados en el video.
-                if (data != null) {
-                    mMediaUri = data.getData();
-                    generateDialog(mMediaUri.toString()).show();
-                }
-                checkSize(mMediaUri);
-
-            } else if (requestCode == TAKE_VIDEO_REQUEST) {
-                fileType=ParseConstants.TYPE_VIDEO;
-                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                sendBroadcast(mediaScanIntent);
-                generateDialog(mMediaUri.toString()).show();
-            } else if (requestCode== TAKE_PHOTO_REQUEST){
-                fileType= ParseConstants.TYPE_IMAGE;
-                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                sendBroadcast(mediaScanIntent);
-                generateDialog(mMediaUri.toString()).show();
-            }
-
-            Intent recipientsActivityIntent = new Intent(MainActivity.this, RecipientsActivity.class);
-            recipientsActivityIntent.putExtra(ParseConstants.KEY_FILETYPE,fileType);
-           // recipientsActivityIntent.putExtra(ParseConstants.KEY_FILENAME);
-            recipientsActivityIntent.setData(mMediaUri);
-            startActivity(recipientsActivityIntent);
 
 
-        } else {
-            generateDialog(getResources().getString(R.string.camera_left_warning)).show();
-        }
-
-    }
-
-
-    public void checkSize(Uri mMediaUri) {
-        int fileSize = 0;
-        InputStream inputStream = null;
-        try {
-            inputStream = getContentResolver().openInputStream(mMediaUri);
-            //assert asegura que inputStream no sea nulo
-            assert inputStream != null;
-            fileSize = inputStream.available();
-            if (checkIfSizeCorrect(fileSize)) {
-                Toast.makeText(MainActivity.this, "Video was added", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(MainActivity.this, "Video not added. Max 10MB", Toast.LENGTH_SHORT).show();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                assert inputStream != null;
-                inputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
-    }
-
-
-    private Uri getOutputMediaFileUri(int mediaType) {
-        if (isExternalStorageAvailable()) {
-            switch (mediaType) {
-                case MEDIA_TYPE_IMAGE:
-                    mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), appname + " photos");
-                    break;
-                case MEDIA_TYPE_VIDEO:
-                    mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES), appname + " videos");
-                    break;
-            }
-            if (!mediaStorageDir.exists()) {
-                if (!mediaStorageDir.mkdirs()) {
-                    Log.d("GoChat", "Foto no creada ");
-                    return null;
-                }
-            }
-        } else {
-            Toast.makeText(MainActivity.this, "Introduce memoria SD", Toast.LENGTH_SHORT).show();
-        }
-
-        File mediaFile;
-        Date now = new Date();
-        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss", new Locale("es", "ES")).format(now);
-        String path = mediaStorageDir.getPath() + File.separator;
-        if (mediaType == MEDIA_TYPE_IMAGE) {
-            mediaFile = new File(path + "IMG_" + timestamp + ".jpg");
-        } else if (mediaType == MEDIA_TYPE_VIDEO) {
-            mediaFile = new File(path + "VID_" + timestamp + ".mp4");
-        } else {
-            return null;
-        }
-
-        return Uri.fromFile(mediaFile);
-    }
 
     private static boolean isExternalStorageAvailable() {
         String state = Environment.getExternalStorageState();
         if (state.equals(Environment.MEDIA_MOUNTED))
             return true;
         else return false;
-    }
-
-
-    public boolean checkIfSizeCorrect(int fileSize) {
-        if (fileSize > FILE_SIZE_LIMIT)
-            return false;
-        else
-            return true;
     }
 }

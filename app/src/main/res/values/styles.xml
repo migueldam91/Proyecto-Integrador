@@ -15,14 +15,26 @@
 
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:tabWidgetStyle">@android:style/Widget.TabWidget</item></style>
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <item name="android:tabWidgetStyle">@android:style/Widget.TabWidget</item>
+        <item name="android:actionOverflowButtonStyle">@style/MyOverFlow</item>
+        <item name="android:textColorPrimary">@color/colorSelect</item>
+        <!--<item name="android:actionBarSplitStyle">@color/colorAccent</item>-->
+        <!--<item name="android:actionOverflowButtonStyle">@color/colorDivider</item>-->
+    </style>
 
-    <style name="AppTheme.NoActionBar">
+
+    <style name="MyOverFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_more_vert_24dp</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:actionBarSplitStyle">@color/colorAccent</item>
+        <item name="actionOverflowButtonStyle">@color/colorDivider</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

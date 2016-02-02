@@ -22,6 +22,7 @@ import com.parse.ParseUser;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import miguel.chatgo.Utils.MessageAdapter;
@@ -30,9 +31,10 @@ import miguel.chatgo.Utils.utilSingleton;
 /**
  * Created by Miguel on 1/8/2016.
  */
-public class InboxFragment extends ListFragment{
+public class InboxFragment extends ListFragment {
     private List<ParseObject> mMessages;
     private TextView noMessages;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,7 +72,7 @@ public class InboxFragment extends ListFragment{
                     MessageAdapter adapter = new MessageAdapter(getListView().getContext(), 0, mMessages);
                     setListAdapter(adapter);
 
-                    if(mMessages.size()!=0){
+                    if (mMessages.size() != 0) {
                         noMessages.setVisibility(View.INVISIBLE);
                     }
 
@@ -89,19 +91,33 @@ public class InboxFragment extends ListFragment{
         String messageType = message.getString(ParseConstants.KEY_FILETYPE);
 
         ParseFile file = message.getParseFile(ParseConstants.KEY_FILE);
-        Uri fileUri= Uri.parse(file.getUrl());
+        Uri fileUri = Uri.parse(file.getUrl());
+        List<String> ids = message.getList(ParseConstants.KEY_RECIPIENTSID);
 
 
         //Operación al recibir el mensaje
-        if(messageType.equals(ParseConstants.TYPE_IMAGE)){
-            Intent intentTypeImage = new Intent(getActivity(),ViewImageActivity.class);
+        if (messageType.equals(ParseConstants.TYPE_IMAGE)) {
+            Intent intentTypeImage = new Intent(getActivity(), ViewImageActivity.class);
             intentTypeImage.setData(fileUri);
             startActivity(intentTypeImage);
-        }else{
-            Intent intentTypeVideo=new Intent(Intent.ACTION_VIEW, fileUri);
-            intentTypeVideo.setDataAndType(fileUri,"video/*");
+        } else {
+            Intent intentTypeVideo = new Intent(Intent.ACTION_VIEW, fileUri);
+            intentTypeVideo.setDataAndType(fileUri, "video/*");
             startActivity(intentTypeVideo);
 
+        }
+
+        if (ids.size() > 1) {
+
+            utilSingleton.getInstance().generateDialog("ids!>1", getActivity().getApplicationContext());
+            ids.remove(ParseUser.getCurrentUser().getObjectId());
+            ArrayList<String> idsToRemove = new ArrayList<>();
+            idsToRemove.add(ParseUser.getCurrentUser().getObjectId());
+            message.removeAll(ParseConstants.KEY_RECIPIENTSID, idsToRemove);
+            message.saveInBackground();
+
+        } else {
+            message.deleteInBackground();
         }
     }
 

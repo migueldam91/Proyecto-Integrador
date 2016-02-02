@@ -36,7 +36,9 @@
                 android:paddingBottom="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/imagensplashicono"/>
+                android:src="@drawable/imagensplashgris"
+                />
+
 
         </LinearLayout>
         <LinearLayout
@@ -51,11 +53,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="0.425"/>
+        android:layout_weight="0.425"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:gravity="center|center_horizontal">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="0.25"
+            android:text="Welcolme"
+            android:gravity="center|center_horizontal"
+            android:textColor="#f8faff"
+            android:visibility="invisible"
+            android:id="@+id/welcomeTextview"
+            android:textSize="25dp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="0.75" />
 
-
-
-
+        </LinearLayout>
 </LinearLayout>
