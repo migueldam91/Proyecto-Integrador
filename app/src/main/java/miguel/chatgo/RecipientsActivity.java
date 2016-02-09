@@ -52,6 +52,7 @@ public class RecipientsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipients);
+
         progressBar = (ProgressBar) findViewById(R.id.recipientsProgress);
         mListView = (ListView) findViewById(R.id.recipientsList);
         progressBar.setVisibility(View.GONE);
@@ -60,14 +61,10 @@ public class RecipientsActivity extends AppCompatActivity {
         //fileType=getIntent().getExtras().getString(ParseConstants.KEY_FILETYPE);
         //mFriendsRelation=mCurrentUser.getRelation(ParseConstants.KEY_FRIENDS_RELATION);
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Falta por meter el nombre del objeto del list en el arrayList
-                //recipientsIdsAux.add()
                 if (mListView.getCheckedItemCount() != 0)
                     mSendMenuItem.setVisible(true);
                 else
@@ -127,8 +124,6 @@ public class RecipientsActivity extends AppCompatActivity {
         message.put(ParseConstants.KEY_SENDERID, ParseUser.getCurrentUser().getObjectId());
         message.put(ParseConstants.KEY_SENDERNAME, ParseUser.getCurrentUser().getUsername());
         message.put(ParseConstants.KEY_RECIPIENTSID, getRecipientsIds());
-        //
-
 
         fileType=getIntent().getExtras().getString(ParseConstants.KEY_FILETYPE);
         AbstractMap.SimpleEntry fileInfo = new AbstractMap.SimpleEntry(fileType, mMediaUri);
@@ -146,9 +141,7 @@ public class RecipientsActivity extends AppCompatActivity {
 
         ParseFile file = new ParseFile(fileName,fileBytesArray);
         message.put(ParseConstants.KEY_FILETYPE, fileType);
-        //message.put(ParseConstants.KEY_FILETYPE, fileName);
         message.put(ParseConstants.KEY_FILENAME,fileName);
-
         message.put(ParseConstants.KEY_FILE, file);
 
         return message;

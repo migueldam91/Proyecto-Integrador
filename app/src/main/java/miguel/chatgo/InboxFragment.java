@@ -47,10 +47,7 @@ public class InboxFragment extends ListFragment {
         mswipeRefreshLayout.setOnRefreshListener(mOnRefreshListener);
 
 
-        /*TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-        textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
-//        ProgressBar progressBar = (ProgressBar) rootView.findViewById(R.id.progressBarListView);
-//        progressBar.setVisibility(View.GONE);
+
         noMessages = (TextView) rootView.findViewById(R.id.emptyLabel);
         return rootView;
     }
@@ -80,10 +77,7 @@ public class InboxFragment extends ListFragment {
                         usernames[i] = message.getString(ParseConstants.KEY_SENDERNAME);
                         i++;
                     }
-                    /*ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                            getListView().getContext(),
-                            android.R.layout.simple_list_item_1,
-                            usernames);*/
+
                     MessageAdapter adapter = new MessageAdapter(getListView().getContext(), 0, mMessages);
                     setListAdapter(adapter);
 
