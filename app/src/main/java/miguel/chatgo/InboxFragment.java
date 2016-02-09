@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.Parse;
@@ -33,16 +35,22 @@ import miguel.chatgo.Utils.utilSingleton;
  */
 public class InboxFragment extends ListFragment {
     private List<ParseObject> mMessages;
+    protected SwipeRefreshLayout mswipeRefreshLayout;
     private TextView noMessages;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.inboxfragment, container, false);
+
+        mswipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
+        mswipeRefreshLayout.setOnRefreshListener(mOnRefreshListener);
+
+
         /*TextView textView = (TextView) rootView.findViewById(R.id.section_label);
         textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
-        ProgressBar progressBar = (ProgressBar) rootView.findViewById(R.id.progressBarListView);
-        progressBar.setVisibility(View.GONE);
+//        ProgressBar progressBar = (ProgressBar) rootView.findViewById(R.id.progressBarListView);
+//        progressBar.setVisibility(View.GONE);
         noMessages = (TextView) rootView.findViewById(R.id.emptyLabel);
         return rootView;
     }
@@ -50,13 +58,20 @@ public class InboxFragment extends ListFragment {
     @Override
     public void onResume() {
         super.onResume();
+        retrieveMessages();
+
+    }
+
+    private void retrieveMessages() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(ParseConstants.CLASS_MESSAGES);
         query.whereEqualTo(ParseConstants.KEY_RECIPIENTSID, ParseUser.getCurrentUser().getObjectId());
         query.addDescendingOrder(ParseConstants.KEY_CREATEDAT);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
-                //progressBar.setVisibility
+                if(mswipeRefreshLayout.isRefreshing()){
+                    mswipeRefreshLayout.setRefreshing(false);
+                }
                 if (e == null) {
                     mMessages = objects;
                     String[] usernames = new String[objects.size()];
@@ -81,7 +96,6 @@ public class InboxFragment extends ListFragment {
                 }
             }
         });
-
     }
 
     @Override
@@ -120,5 +134,15 @@ public class InboxFragment extends ListFragment {
             message.deleteInBackground();
         }
     }
+
+    private SwipeRefreshLayout.OnRefreshListener mOnRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            Toast.makeText(getActivity(), "SwipeRefreshLayout", Toast.LENGTH_SHORT).show();
+            retrieveMessages();
+
+        }
+    };
+
 
 }

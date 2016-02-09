@@ -69,7 +69,7 @@
         android:text="@string/Login_button_label"
         android:id="@+id/actionButton"
         android:onClick="logearse"
-        android:layout_alignTop="@+id/progressBarLogin"
+        android:layout_below="@+id/authLayoutContainer"
         android:layout_alignLeft="@+id/authLayoutContainer"
         android:layout_alignStart="@+id/authLayoutContainer"
         android:layout_alignRight="@+id/authLayoutContainer"
@@ -86,21 +86,22 @@
         android:text="@string/sign_up_text"
         android:textColor="@color/colorAccent"
         android:id="@+id/signUpText"
+        android:textStyle="bold"
+        android:textSize="24sp"
         android:onClick="signUpOnClick"
         android:clickable="true"
-        android:layout_alignBottom="@+id/progressBarLogin"
-        android:layout_alignLeft="@+id/progressBarLogin"
-        android:layout_alignStart="@+id/progressBarLogin" />
+        android:layout_alignTop="@+id/progressBarLogin"
+        android:layout_centerHorizontal="true" />
 
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressBarLogin"
-        android:layout_below="@+id/authLayoutContainer"
-        android:layout_alignRight="@+id/subtitle"
-        android:layout_alignEnd="@+id/subtitle"
-        android:indeterminate="false" />
+        android:indeterminate="false"
+        android:layout_below="@+id/actionButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp" />
 
 
 

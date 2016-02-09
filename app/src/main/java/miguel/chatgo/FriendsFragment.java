@@ -37,8 +37,7 @@ public class FriendsFragment extends ListFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.friendsfragment, container, false);
-        /*TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-        textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));*/
+
         progressBar= (ProgressBar) rootView.findViewById(R.id.progressBarListView);
         addFriends_Textview = (TextView) rootView.findViewById(R.id.noFriendsLabel);
         progressBar.setVisibility(View.GONE);
@@ -71,7 +70,7 @@ public class FriendsFragment extends ListFragment{
                     progressBar.setVisibility(View.GONE);
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                             getListView().getContext(),
-                            android.R.layout.simple_list_item_1,
+                            R.layout.listviewitem,
                             usernames);
                     setListAdapter(adapter);
                     if(mUsers.size()!=0)

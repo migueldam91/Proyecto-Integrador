@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordField = (EditText) findViewById(R.id.passwordField);
         progressBar = (ProgressBar) findViewById(R.id.progressBarLogin);
         progressBar.setVisibility(View.INVISIBLE);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "Lighthouse_PersonalUse.ttf");
         titleField.setTypeface(font);
         subtitleField.setTypeface(font);
