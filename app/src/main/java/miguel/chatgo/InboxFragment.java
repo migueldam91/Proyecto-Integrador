@@ -42,12 +42,8 @@ public class InboxFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.inboxfragment, container, false);
-
         mswipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
         mswipeRefreshLayout.setOnRefreshListener(mOnRefreshListener);
-
-
-
         noMessages = (TextView) rootView.findViewById(R.id.emptyLabel);
         return rootView;
     }

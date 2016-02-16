@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="15dp"
-    android:paddingTop="15dp">
+    android:paddingTop="15dp"
+    >
 
 
 
@@ -27,6 +28,7 @@
             android:text="New Text"
             android:id="@+id/senderLabel"
             android:layout_gravity="center"
+            android:textColor="@android:color/black"
             />
     </LinearLayout>
 

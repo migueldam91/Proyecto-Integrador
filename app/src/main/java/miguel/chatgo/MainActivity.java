@@ -156,14 +156,14 @@ public class MainActivity extends AppCompatActivity {
             if (requestCode == PICK_PHOTO_REQUEST) {
                 if (data != null) {
                     mMediaUri = data.getData();
-                    generateDialog(mMediaUri.toString()).show();
+                    //generateDialog(mMediaUri.toString()).show();
                 }
             } else if (requestCode == PICK_VIDEO_REQUEST) {
                 fileType = ParseConstants.TYPE_VIDEO;
                 //recoge los datos procesados en el video.
                 if (data != null) {
                     mMediaUri = data.getData();
-                    generateDialog(mMediaUri.toString()).show();
+                    //generateDialog(mMediaUri.toString()).show();
                 }
                 checkSize(mMediaUri);
 
@@ -171,12 +171,12 @@ public class MainActivity extends AppCompatActivity {
                 fileType = ParseConstants.TYPE_VIDEO;
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                 sendBroadcast(mediaScanIntent);
-                generateDialog(mMediaUri.toString()).show();
+                //generateDialog(mMediaUri.toString()).show();
             } else if (requestCode == TAKE_PHOTO_REQUEST) {
                 fileType = ParseConstants.TYPE_IMAGE;
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                 sendBroadcast(mediaScanIntent);
-                generateDialog(mMediaUri.toString()).show();
+                //generateDialog(mMediaUri.toString()).show();
             }
 
             Intent recipientsActivityIntent = new Intent(MainActivity.this, RecipientsActivity.class);
@@ -329,7 +329,6 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             takePhotoIntent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT,
                                     mMediaUri);
-                            //takePhotoIntent.putExtra("return-data", true);
                         }
                         startActivityForResult(takePhotoIntent, TAKE_PHOTO_REQUEST);
                         break;

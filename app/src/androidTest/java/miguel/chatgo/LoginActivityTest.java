@@ -42,9 +42,6 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
     public void tearDown() throws Exception {
         super.tearDown();
     }
-
-
-
     private static final String LOGIN = "foo";
     private static final String PASSWORD = "bar";
 
@@ -56,11 +53,10 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
         getInstrumentation().sendStringSync(LOGIN);
         TouchUtils.tapView(this, passwordField);
         getInstrumentation().sendStringSync(PASSWORD);
-        //alertDialog= loginActivity.generarDialogo("bla");
         //Testea los parámetros
         TouchUtils.clickView(this, btnlogin);
 
-        //assertNotNull("Test Login", ParseUser.logIn(LOGIN, PASSWORD));
+        assertNotNull("Test Login", ParseUser.logIn(LOGIN, PASSWORD));
         //assertTrue("Test Login", loginActivity.logearse(btnlogin));
     }
 

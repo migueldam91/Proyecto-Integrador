@@ -43,7 +43,6 @@ public class RecipientsActivity extends AppCompatActivity {
     ProgressBar progressBar;
     ListView mListView;
     MenuItem mSendMenuItem;
-    ArrayList<String> recipientsIdsAux = new ArrayList<>();
     Uri mMediaUri;
     String fileType = "";
     Intent intent = null;
@@ -175,7 +174,6 @@ public class RecipientsActivity extends AppCompatActivity {
                 if (e == null) {
                     mUsers = objects;
                     usernames = new String[objects.size()];
-                    //copyUsernamesIntoStringArray(usernames);
                     utilidades.copyUsernamesIntoStringArray(usernames, mUsers);
                     progressBar.setVisibility(View.GONE);
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(
