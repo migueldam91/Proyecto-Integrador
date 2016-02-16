@@ -101,7 +101,11 @@
         <item name="android:textColor">@color/colorPrimaryDark</item>
 
     </style>
-    <!--<item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
-    <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>-->
+
+    <style name="gridItemView">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 
 </resources>
