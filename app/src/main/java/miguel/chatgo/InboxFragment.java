@@ -8,26 +8,21 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import miguel.chatgo.Utils.MessageAdapter;
+import miguel.chatgo.Utils.Adapters.MessageAdapter;
 import miguel.chatgo.Utils.utilSingleton;
 
 /**
@@ -112,7 +107,6 @@ public class InboxFragment extends ListFragment {
         }
 
         if (ids.size() > 1) {
-
             utilSingleton.getInstance().generateDialog("ids!>1", getActivity().getApplicationContext());
             ids.remove(ParseUser.getCurrentUser().getObjectId());
             ArrayList<String> idsToRemove = new ArrayList<>();

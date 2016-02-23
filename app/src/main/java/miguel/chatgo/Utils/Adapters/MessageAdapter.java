@@ -1,4 +1,4 @@
-package miguel.chatgo.Utils;
+package miguel.chatgo.Utils.Adapters;
 
 import android.content.Context;
 import android.media.Image;

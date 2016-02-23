@@ -29,6 +29,8 @@
         style="@style/listElements"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/empty_Inbox_Label" />
+        android:text="@string/empty_Inbox_Label"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

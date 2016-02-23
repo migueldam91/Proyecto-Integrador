@@ -1,15 +1,10 @@
 package miguel.chatgo;
 
-import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.GridLayout;
 import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -24,7 +19,7 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 import java.util.List;
 
-import miguel.chatgo.Utils.ImageAdapter;
+import miguel.chatgo.Utils.Adapters.ImageAdapter;
 import miguel.chatgo.Utils.utilSingleton;
 
 /**
@@ -92,7 +87,7 @@ public class FriendsFragment extends android.support.v4.app.Fragment{
                     progressBar.setVisibility(View.GONE);
                     //Introducir n tiles por los n usuarios de la query.
                     imageAdapter=new ImageAdapter(getActivity(),mUsers);
-                    imageAdapter.refill();
+                    //imageAdapter.refill();
                     gridview.setAdapter(imageAdapter);
                     if(mUsers.size()!=0)
                         addFriends_Textview.setVisibility(View.INVISIBLE);
@@ -107,19 +102,4 @@ public class FriendsFragment extends android.support.v4.app.Fragment{
 
     }
 
-//    protected void copyUsernamesIntoStringArray(String [] usernames){
-//        int i =0 ;
-//        for (ParseUser user : mUsers){
-//            usernames[i]=user.getUsername();
-//            i++;
-//        }
-//    }
-//    protected AlertDialog generateDialog(String message){
-//        AlertDialog.Builder builder = new AlertDialog.Builder(getListView().getContext());
-//        builder.setTitle(R.string.editFriendsErrorTitle)
-//                .setMessage(message)
-//                .setPositiveButton(android.R.string.ok, null);
-//        AlertDialog dialog = builder.create();
-//        return dialog;
-//    }
 }

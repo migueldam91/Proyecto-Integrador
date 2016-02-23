@@ -37,8 +37,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             default:
                 return null;
         }
-
-        //return new InboxFragment();
     }
 
     @Override
