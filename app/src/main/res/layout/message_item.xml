@@ -1,35 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="15dp"
     android:paddingTop="15dp"
-    >
-
+    android:layout_marginLeft="@dimen/inbox_horizontal_margin"
+    android:layout_marginRight="@dimen/inbox_horizontal_margin"
+    android:layout_marginTop="@dimen/inbox_vertical_margin"
+    android:background="@color/light_purple_background">
 
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:layout_marginBottom="4dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imagePic"
             android:src="@drawable/picbutton"
-            android:layout_gravity="center"
-            android:layout_marginRight="25dp" />
+            android:contentDescription="@string/content_desc_message_icon" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/senderLabel"
-            android:layout_gravity="center"
-            android:textColor="@android:color/black"
-            />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/senderLabel"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:textColor="@color/colorPrimary"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/timeLabel"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:textSize="12sp"
+                android:textColor="@color/colorPrimary"
+                />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -10,6 +10,8 @@
     <dimen name="loginHorizontalMargin">10dp</dimen>
     <dimen name="loginVerticalPadding">10dp</dimen>
     <dimen name="loginHorizontalPadding">10dp</dimen>
+    <dimen name="inbox_horizontal_margin">8dp</dimen>
+    <dimen name="inbox_vertical_margin">8dp</dimen>
 
 
 </resources>

@@ -57,7 +57,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="buttonCancel">Cancelar</string>
-
-    <!-- Facebook ID-->
-    <string name="facebook_app_id">1568894696763793</string>
+    <string name="facebook_app_id">Perrito</string>
+    <string name="content_desc_message_icon">Message icon</string>
 </resources>
