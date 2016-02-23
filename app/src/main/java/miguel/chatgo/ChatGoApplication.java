@@ -3,7 +3,6 @@ package miguel.chatgo;
 import android.app.Application;
 
 import com.parse.Parse;
-
 import miguel.chatgo.Utils.utilSingleton;
 
 /**
@@ -18,10 +17,6 @@ public class ChatGoApplication extends Application {
 
         utilSingleton utilSingleton = miguel.chatgo.Utils.utilSingleton.getInstance();
 
-
-        /*ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();*/
 
     }
 
