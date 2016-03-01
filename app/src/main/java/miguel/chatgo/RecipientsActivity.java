@@ -57,8 +57,6 @@ public class RecipientsActivity extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
         intent = getIntent();
         mMediaUri=getIntent().getData();
-        //fileType=getIntent().getExtras().getString(ParseConstants.KEY_FILETYPE);
-        //mFriendsRelation=mCurrentUser.getRelation(ParseConstants.KEY_FRIENDS_RELATION);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

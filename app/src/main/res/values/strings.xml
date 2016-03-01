@@ -3,7 +3,7 @@
     <string name="app_name">Gochat</string>
     <string name="app_subtitle">lorem ipsum</string>
     <string name="signupTitle">Sign Up</string>
-    <string name="signupSubtitle">Step 1/1</string>
+    <string name="signupSubtitle">Step one/one</string>
 
 
     <string name="logout_menuItem">Log out</string>

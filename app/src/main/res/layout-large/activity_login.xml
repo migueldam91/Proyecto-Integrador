@@ -56,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/usernameField"
+                android:textSize="28sp"
                 android:hint="@string/username_hint"
                 />
 
@@ -64,8 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/passwordField"
-                android:hint="@string/password_hint"
-                />
+                android:textSize="28sp"
+                android:hint="@string/password_hint" />
 
         </LinearLayout>
 
@@ -74,20 +75,13 @@
             android:text="@string/Login_button_label"
             android:id="@+id/actionButton"
             android:onClick="logearse"
+            android:textSize="20sp"
             android:layout_below="@+id/authLayout"
             android:layout_alignRight="@+id/authLayout"
             android:layout_alignEnd="@+id/authLayout"
             android:layout_alignLeft="@+id/authLayout"
             android:layout_alignStart="@+id/authLayout" />
-
-
     </RelativeLayout>
-    <!--
- style="?android:attr/borderlessButtonStyle"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
- -->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -108,8 +102,6 @@
         android:id="@+id/progressBarLogin"
         android:layout_above="@+id/signUpText"
         android:layout_centerHorizontal="true" />
-
-
 
 
 </RelativeLayout>

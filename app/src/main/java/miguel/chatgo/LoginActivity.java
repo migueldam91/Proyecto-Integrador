@@ -37,15 +37,18 @@ public class LoginActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBarLogin);
         progressBar.setVisibility(View.INVISIBLE);
         //getSupportActionBar().hide();
+        setFuente();
+
+
+    }
+
+    private void setFuente() {
         Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "Lighthouse_PersonalUse.ttf");
         titleField.setTypeface(font);
         subtitleField.setTypeface(font);
         usernameField.setTypeface(font);
         passwordField.setTypeface(font);
-
-
     }
-
 
 
     public boolean logearse(View v) throws ParseException {

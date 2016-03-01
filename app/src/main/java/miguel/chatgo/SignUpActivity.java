@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseException;
@@ -26,9 +27,9 @@ import java.util.regex.Pattern;
 
 public class SignUpActivity extends AppCompatActivity {
     private EditText usernameField, passwordField, emailField;
+    private TextView titleField,subtitleField;
     private ParseUser parseUser = new ParseUser();
     private ProgressBar progressBar;
-    private Button mCancelButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,20 +39,26 @@ public class SignUpActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().hide();
-
+        titleField = (TextView) findViewById(R.id.title);
+        subtitleField =(TextView) findViewById(R.id.subtitle);
         usernameField = (EditText) findViewById(R.id.usernameField);
         passwordField = (EditText) findViewById(R.id.passwordField);
+        emailField = (EditText) findViewById(R.id.emailField);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.INVISIBLE);
         progressBar.bringToFront();
         emailField = (EditText) findViewById(R.id.emailField);
+        setFuente();
 
+
+    }
+    private void setFuente() {
         Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "Lighthouse_PersonalUse.ttf");
+        titleField.setTypeface(font);
+        subtitleField.setTypeface(font);
         usernameField.setTypeface(font);
         passwordField.setTypeface(font);
         emailField.setTypeface(font);
-
-
     }
 
 

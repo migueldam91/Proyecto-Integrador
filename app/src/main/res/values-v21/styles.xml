@@ -15,8 +15,6 @@
         <item name="android:textColorSecondary">@color/colorSelect</item>
         <item name="android:textColorSecondaryInverse">@android:color/black</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
-        <!--<item name="android:actionBarSplitStyle">@color/colorAccent</item>-->
-        <!--<item name="android:actionOverflowButtonStyle">@color/colorDivider</item>-->
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -29,11 +27,6 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="listElements">
-        <!--<item name="android:paddingLeft">12dp</item>-->
-        <!--<item name="android:layout_alignParentRight">true</item>-->
-        <!--<item name="android:layout_alignParentLeft">true</item>-->
-        <!--<item name="android:layout_alignParentStart">true</item>-->
-        <!--<item name="android:layout_alignParentEnd">true</item>-->
         <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
