@@ -64,14 +64,14 @@
             android:text="@string/welcomeSplash"
             android:gravity="center|center_horizontal"
             android:textColor="#f8faff"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:id="@+id/welcomeTextview"
-            android:textSize="25sp" />
+            android:textSize="55sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dip"
             android:layout_weight="0.75" />
 
-        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

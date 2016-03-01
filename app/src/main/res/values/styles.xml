@@ -15,7 +15,7 @@
         <item name="android:textColorSecondary">@color/colorSelect</item>
         <item name="android:textColorSecondaryInverse">@android:color/black</item>
     </style>
-    <style name="AppTheme.NoActionBar">
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
         <item name="android:actionBarSplitStyle">@color/colorAccent</item>
