@@ -37,7 +37,7 @@ public class SplashActivity extends AppCompatActivity {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     public void run() {
-                       iv.setImageDrawable(getResources().getDrawable(R.drawable.imagensplashicono));
+                       iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_imagensplashicono));
                     }
                 }, 500);//Tiempo desde Gris hasta Amarillo
 

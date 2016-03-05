@@ -1,78 +1,37 @@
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:background="@drawable/fondosplash"
     android:orientation="vertical"
-    android:weightSum="1">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="0.425"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="0.15"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <LinearLayout
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="0.35"/>
-        <LinearLayout
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/imagensplashgris"
-                />
+    >
 
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:layout_weight="0.35"/>
-
-
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="0.425"
-        android:orientation="vertical"
-        android:weightSum="1"
-        android:gravity="center|center_horizontal">
+    <ImageView
+        android:id="@+id/imageView"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/imagensplashgris"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="0.25"
-            android:text="Welcolme"
+            android:layout_height="wrap_content"
+            android:text="@string/welcomeText"
             android:gravity="center|center_horizontal"
             android:textColor="#f8faff"
             android:visibility="invisible"
             android:id="@+id/welcomeTextview"
-            android:textSize="25dp" />
+            android:textSize="25sp"
+            android:layout_below="@+id/imageView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:layout_centerHorizontal="true" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="0.75" />
-
-        </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
