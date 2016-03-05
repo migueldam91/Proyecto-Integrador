@@ -15,6 +15,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,6 +34,8 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import miguel.chatgo.Utils.GoChatDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
             Log.v("USER", loggedUser.getUsername());
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        /*setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);*/
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -101,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
             tabLayout.getTabAt(1).setIcon(R.drawable.ic_tab_friends);
             tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
         }
-
         appname = MainActivity.this.getString(R.string.app_name);
     }
 
@@ -139,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_camera:
                 dialogCameraChoices().show();
+
                 break;
             default:
                 break;
@@ -305,15 +308,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private android.support.v7.app.AlertDialog dialogCameraChoices() {
-        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(MainActivity.this);
+        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(
+        new ContextThemeWrapper(MainActivity.this,R.style.DialogAppTheme));
         String[] options = getResources().getStringArray(R.array.camera_choices);
         builder.setTitle(R.string.menu_choose_option_label)
                 .setItems(options, mDialogListener())
-                .setPositiveButton(android.R.string.ok, null);
+                .setPositiveButton(android.R.string.ok, null)
+                ;
         android.support.v7.app.AlertDialog dialog = builder.create();
+
         return dialog;
 
     }
+
 
     private DialogInterface.OnClickListener mDialogListener() {
 

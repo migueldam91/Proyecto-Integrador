@@ -3,7 +3,8 @@
     <!-- Base application theme. -->
     <!-- Customize your theme here. -->
 
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+
+    <style name="AppTheme" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -16,21 +17,25 @@
         <item name="android:textColorSecondaryInverse">@android:color/black</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
     </style>
-
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">true</item>
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:actionBarSplitStyle">@color/colorAccent</item>
         <item name="actionOverflowButtonStyle">@color/colorDivider</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="DialogAppTheme" parent="AppTheme">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorSelect</item>
+        <item name="android:colorBackground">@color/colorPrimary</item>
+    </style>
+
 
     <style name="listElements">
         <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
     <style name="AuthFieldContainer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -91,7 +96,25 @@
         <item name="android:textColor">@color/colorPrimaryDark</item>
 
     </style>
+
+    <style name="AppThemeP" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorSelect</item>
+        <item name="android:windowBackground">@color/colorPrimaryDark</item>
+        <item name="android:colorBackground">@color/colorPrimaryDark</item>
+        <item name="android:colorForeground">@color/colorSelect</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:textColorPrimaryInverse">@color/colorPrimaryDark</item>
+        <item name="android:textColorSecondary">@color/colorSelect</item>
+        <item name="android:textColorSecondaryInverse">@android:color/black</item>
+    </style>
     <!--<item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
     <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>-->
+    <style name="gridItemView">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:gravity">center</item>
+    </style>
 
 </resources>

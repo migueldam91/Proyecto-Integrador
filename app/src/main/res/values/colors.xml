@@ -16,5 +16,6 @@
     <color name="colorSelect">#ECDECF</color>
     <color name="colorBackground">#ffffff</color>
     <color name="foreground_material_light">#ffffff</color>
+    <color name="accent_material_dark_1">#ff4040</color>
 
 </resources>

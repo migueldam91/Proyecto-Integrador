@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="miguel.chatgo.MainActivity"
+    style="@style/AppTheme.NoActionBar"
     >
 
     <android.support.design.widget.AppBarLayout
@@ -22,7 +23,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+           >
         </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
