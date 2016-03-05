@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private File mediaStorageDir;
     private Uri mMediaUri;
     private String fileType = "";
-    FloatingActionButton sendFButton;
+    public static DialogInterface.OnClickListener mDialogListener;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -110,13 +110,9 @@ public class MainActivity extends AppCompatActivity {
         //Posible error en MainActivity this, podria ser getApplicationContext()
 
         appname = MainActivity.this.getString(R.string.app_name);
-
+        mDialogListener=mDialogListener();
     }
 
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
 
 
     @Override
@@ -141,14 +137,14 @@ public class MainActivity extends AppCompatActivity {
                 logOutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(logOutIntent);
                 return true;
-            case R.id.openFriendsActivity:
+/*            case R.id.openFriendsActivity:
                 Intent editFriendsIntent = new Intent(MainActivity.this, EditFriendsActivity.class);
                 startActivity(editFriendsIntent);
                 return true;
             case R.id.action_camera:
                 dialogCameraChoices().show();
 
-                break;
+                break;*/
             default:
                 break;
         }

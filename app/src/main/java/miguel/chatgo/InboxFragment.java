@@ -52,6 +52,7 @@ public class InboxFragment extends ListFragment {
             @Override
             public void onClick(View view) {
                 //dialogCameraChoices().show();
+                utilSingleton.getInstance().dialogCameraChoices(getContext(),MainActivity.mDialogListener).show();
             }
         });
 

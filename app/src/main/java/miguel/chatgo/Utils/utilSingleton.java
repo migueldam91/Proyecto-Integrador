@@ -48,7 +48,7 @@ public class utilSingleton {
         return dialog;
     }
 
-    private android.support.v7.app.AlertDialog dialogCameraChoices(Context context,DialogInterface.OnClickListener mDialogListener) {
+    public  android.support.v7.app.AlertDialog dialogCameraChoices(Context context,DialogInterface.OnClickListener mDialogListener) {
         android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(
                 new ContextThemeWrapper(context,R.style.DialogAppTheme));
         String[] options = context.getResources().getStringArray(R.array.camera_choices);

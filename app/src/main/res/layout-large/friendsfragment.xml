@@ -15,12 +15,11 @@
         android:clipToPadding="false"
         android:horizontalSpacing="5dp"
         android:verticalSpacing="5dp"
-        android:numColumns="auto_fit"
         android:columnWidth="90dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        />
+        android:numColumns="4" />
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
@@ -34,8 +33,8 @@
         android:layout_height="wrap_content"
         android:text="@string/empty_Friends_Label"
         android:id="@+id/noFriendsLabel"
+        android:textSize="@dimen/textSizeL"
         android:textColor="@android:color/black"
-        android:textSize="@dimen/textSizeN"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
