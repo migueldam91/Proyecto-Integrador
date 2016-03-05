@@ -1,6 +1,8 @@
 package miguel.chatgo;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -8,6 +10,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +35,7 @@ public class InboxFragment extends ListFragment {
     private List<ParseObject> mMessages;
     protected SwipeRefreshLayout mswipeRefreshLayout;
     private TextView noMessages;
+    private ImageView noMessagesImage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,6 +44,7 @@ public class InboxFragment extends ListFragment {
         mswipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
         mswipeRefreshLayout.setOnRefreshListener(mOnRefreshListener);
         noMessages = (TextView) rootView.findViewById(R.id.emptyLabel);
+        noMessagesImage= (ImageView) rootView.findViewById(R.id.imageNoMessages);
         return rootView;
     }
 
@@ -74,6 +79,7 @@ public class InboxFragment extends ListFragment {
 
                     if (mMessages.size() != 0) {
                         noMessages.setVisibility(View.INVISIBLE);
+                        noMessagesImage.setVisibility(View.INVISIBLE);
                     }
 
                 } else {

@@ -27,9 +27,8 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="101dp">
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -44,8 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/empty_Inbox_Label"
+            android:textSize="@dimen/textSizeL"
             android:layout_below="@id/imageNoMessages"
-            android:textSize="@dimen/textSizeN"
             android:layout_centerHorizontal="true" />
 
     </RelativeLayout>

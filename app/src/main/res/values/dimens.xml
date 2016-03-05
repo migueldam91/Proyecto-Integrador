@@ -14,4 +14,11 @@
     <dimen name="inbox_vertical_margin">8dp</dimen>
 
 
+    <!-- HDPI screens-->
+
+    <dimen name="textSizeN">16sp</dimen>
+
+
+    <!-- HLDPI screens-->
+    <dimen name="textSizeL">26sp</dimen>
 </resources>
