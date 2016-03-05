@@ -1,6 +1,8 @@
 package miguel.chatgo;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,12 +37,12 @@ public class FriendsFragment extends android.support.v4.app.Fragment{
     TextView addFriends_Textview;
     ImageAdapter imageAdapter;
     GridView gridview;
-
+    private FloatingActionButton addFriendsButton;
 
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.friendsfragment, container, false);
 
@@ -58,6 +60,16 @@ public class FriendsFragment extends android.support.v4.app.Fragment{
         progressBar= (ProgressBar) rootView.findViewById(R.id.progressBarListView);
         addFriends_Textview = (TextView) rootView.findViewById(R.id.noFriendsLabel);
         progressBar.setVisibility(View.GONE);
+        addFriendsButton = (FloatingActionButton) rootView.findViewById(R.id.sendFButton);
+
+        addFriendsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent editFriendsIntent = new Intent(container.getContext(), EditFriendsActivity.class);
+                startActivity(editFriendsIntent);
+            }
+        });
+
         return rootView;
     }
 
@@ -87,7 +99,7 @@ public class FriendsFragment extends android.support.v4.app.Fragment{
                     progressBar.setVisibility(View.GONE);
                     //Introducir n tiles por los n usuarios de la query.
                     imageAdapter=new ImageAdapter(getActivity(),mUsers);
-                    //imageAdapter.refill();
+
                     gridview.setAdapter(imageAdapter);
                     if(mUsers.size()!=0)
                         addFriends_Textview.setVisibility(View.INVISIBLE);

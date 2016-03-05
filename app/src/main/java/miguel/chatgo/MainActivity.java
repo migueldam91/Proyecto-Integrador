@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -45,15 +47,13 @@ public class MainActivity extends AppCompatActivity {
     private static int PICK_VIDEO_REQUEST = 3;
     final public static int MEDIA_TYPE_IMAGE = 4;
     final public static int MEDIA_TYPE_VIDEO = 5;
-
     //10 MBs en bytes
     public static int FILE_SIZE_LIMIT = 1048576;
-
-    String appname;
-    File mediaStorageDir;
-    Uri mMediaUri;
-    String fileType = "";
-
+    private String appname;
+    private File mediaStorageDir;
+    private Uri mMediaUri;
+    private String fileType = "";
+    FloatingActionButton sendFButton;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -75,6 +75,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ParseUser loggedUser = ParseUser.getCurrentUser();
+        mSectionsPagerAdapter = new SectionsPagerAdapter(MainActivity.this, getSupportFragmentManager());
+        // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+
         if (loggedUser == null) {
             Intent intent = new Intent(this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -84,27 +91,26 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Log.v("USER", loggedUser.getUsername());
         }
+
+
+        if (tabLayout.getTabCount() > 0) {
+            tabLayout.getTabAt(0).setIcon(R.drawable.ic_tab_inbox);
+            tabLayout.getTabAt(1).setIcon(R.drawable.ic_tab_friends);
+            tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
+        }
+/*
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+*/
         /*setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);*/
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         //Posible error en MainActivity this, podria ser getApplicationContext()
-        mSectionsPagerAdapter = new SectionsPagerAdapter(MainActivity.this, getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
-        if (tabLayout.getTabCount() > 0) {
-            tabLayout.getTabAt(0).setIcon(R.drawable.ic_tab_inbox);
-            tabLayout.getTabAt(1).setIcon(R.drawable.ic_tab_friends);
-            tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
-        }
         appname = MainActivity.this.getString(R.string.app_name);
+
     }
 
 
@@ -298,7 +304,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private android.support.v7.app.AlertDialog generateDialog(String error) {
-        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(MainActivity.this);
+        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(
+                new ContextThemeWrapper(MainActivity.this,R.style.DialogAppTheme));
         builder.setTitle(error)
                 .setMessage(error)
                 .setPositiveButton(android.R.string.ok, null);

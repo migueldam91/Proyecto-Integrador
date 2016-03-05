@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ListFragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
@@ -36,7 +37,7 @@ public class InboxFragment extends ListFragment {
     protected SwipeRefreshLayout mswipeRefreshLayout;
     private TextView noMessages;
     private ImageView noMessagesImage;
-
+    private FloatingActionButton sendFButton;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -45,6 +46,15 @@ public class InboxFragment extends ListFragment {
         mswipeRefreshLayout.setOnRefreshListener(mOnRefreshListener);
         noMessages = (TextView) rootView.findViewById(R.id.emptyLabel);
         noMessagesImage= (ImageView) rootView.findViewById(R.id.imageNoMessages);
+        sendFButton = (FloatingActionButton) rootView.findViewById(R.id.sendFButton);
+
+        sendFButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //dialogCameraChoices().show();
+            }
+        });
+
         return rootView;
     }
 
