@@ -148,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             //comprueba que tipo de info
             if (requestCode == PICK_PHOTO_REQUEST) {
+                fileType= ParseConstants.TYPE_IMAGE;
                 if (data != null) {
                     mMediaUri = data.getData();
                     //generateDialog(mMediaUri.toString()).show();

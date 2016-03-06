@@ -51,7 +51,6 @@ public class InboxFragment extends ListFragment {
         sendFButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //dialogCameraChoices().show();
                 utilSingleton.getInstance().dialogCameraChoices(getContext(),MainActivity.mDialogListener).show();
             }
         });
@@ -63,7 +62,6 @@ public class InboxFragment extends ListFragment {
     public void onResume() {
         super.onResume();
         retrieveMessages();
-
     }
 
     private void retrieveMessages() {
@@ -91,6 +89,9 @@ public class InboxFragment extends ListFragment {
                     if (mMessages.size() != 0) {
                         noMessages.setVisibility(View.INVISIBLE);
                         noMessagesImage.setVisibility(View.INVISIBLE);
+                    }else{
+                        noMessages.setVisibility(View.VISIBLE);
+                        noMessagesImage.setVisibility(View.VISIBLE);
                     }
 
                 } else {
@@ -139,7 +140,6 @@ public class InboxFragment extends ListFragment {
     private SwipeRefreshLayout.OnRefreshListener mOnRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
         @Override
         public void onRefresh() {
-            Toast.makeText(getActivity(), "SwipeRefreshLayout", Toast.LENGTH_SHORT).show();
             retrieveMessages();
 
         }
