@@ -2,6 +2,7 @@ package miguel.chatgo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +39,7 @@ public class FriendsFragment extends android.support.v4.app.Fragment{
     ImageAdapter imageAdapter;
     GridView gridview;
     private FloatingActionButton addFriendsButton;
+
 
 
 

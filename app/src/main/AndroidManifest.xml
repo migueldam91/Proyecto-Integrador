@@ -22,7 +22,7 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="6V7fP7Adqw0JBbaKdLjcXdKnxY4pg2vvvvmSiVJy" />
         <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up"

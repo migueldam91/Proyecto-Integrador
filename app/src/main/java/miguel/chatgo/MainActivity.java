@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -24,20 +25,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.parse.Parse;
 import com.parse.ParseUser;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
-import miguel.chatgo.Utils.GoChatDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-
+    private TabLayout mTabLayout;
+    private Toolbar mToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,8 +77,15 @@ public class MainActivity extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
+        mTabLayout = (TabLayout) findViewById(R.id.tabs);
+        mTabLayout.setupWithViewPager(mViewPager);
+        for (int i = 0; i < mTabLayout.getTabCount(); i++) {
+            TabLayout.Tab tab = mTabLayout.getTabAt(i);
+            tab.setCustomView(mSectionsPagerAdapter.getTabView(i));
+        }
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle("");
+        setSupportActionBar(mToolbar);
 
         if (loggedUser == null) {
             Intent intent = new Intent(this, LoginActivity.class);
@@ -88,26 +93,8 @@ public class MainActivity extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(intent);
-        } else {
-            Log.v("USER", loggedUser.getUsername());
         }
 
-
-        if (tabLayout.getTabCount() > 0) {
-            tabLayout.getTabAt(0).setIcon(R.drawable.ic_tab_inbox);
-            tabLayout.getTabAt(1).setIcon(R.drawable.ic_tab_friends);
-            tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
-            Toast.makeText(MainActivity.this, "hola", Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(MainActivity.this, "adios", Toast.LENGTH_SHORT).show();
-        }
-//        getSupportActionBar().hide();
-/*
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-*/
-        /*setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);*/
 
         appname = MainActivity.this.getString(R.string.app_name);
         mDialogListener=mDialogListener();
@@ -229,39 +216,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
     }
 
-    public static class PlaceholderFragment extends Fragment {
 
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
-
-
-    }
 
     private Uri getOutputMediaFileUri(int mediaType) {
         if (isExternalStorageAvailable()) {
@@ -375,13 +330,45 @@ public class MainActivity extends AppCompatActivity {
         return dialogListener;
     }
 
-
-
-
     private static boolean isExternalStorageAvailable() {
         String state = Environment.getExternalStorageState();
         if (state.equals(Environment.MEDIA_MOUNTED))
             return true;
         else return false;
     }
+
+    public static class PlaceholderFragment extends Fragment {
+
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public PlaceholderFragment() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static PlaceholderFragment newInstance(int sectionNumber) {
+            PlaceholderFragment fragment = new PlaceholderFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            return rootView;
+        }
+
+
+    }
+
 }

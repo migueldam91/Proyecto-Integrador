@@ -20,18 +20,19 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:actionBarSplitStyle">@color/colorAccent</item>
         <item name="actionOverflowButtonStyle">@color/colorDivider</item>
-
     </style>
-
 
     <style name="DialogAppTheme" parent="AppTheme">
         <item name="android:background">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/colorAccent</item>
         <item name="android:positiveButtonText">@color/colorPrimary20</item>
         <item name="android:colorBackground">@color/colorPrimary</item>
-
     </style>
 
+    <style name="AppThemeTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
     <style name="listElements">
         <item name="android:textColor">@color/colorPrimaryDark</item>
