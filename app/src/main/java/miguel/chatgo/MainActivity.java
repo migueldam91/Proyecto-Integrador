@@ -97,17 +97,17 @@ public class MainActivity extends AppCompatActivity {
             tabLayout.getTabAt(0).setIcon(R.drawable.ic_tab_inbox);
             tabLayout.getTabAt(1).setIcon(R.drawable.ic_tab_friends);
             tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
+            Toast.makeText(MainActivity.this, "hola", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(MainActivity.this, "adios", Toast.LENGTH_SHORT).show();
         }
+//        getSupportActionBar().hide();
 /*
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
 */
         /*setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);*/
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        //Posible error en MainActivity this, podria ser getApplicationContext()
 
         appname = MainActivity.this.getString(R.string.app_name);
         mDialogListener=mDialogListener();
