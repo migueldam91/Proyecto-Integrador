@@ -2,8 +2,20 @@
 
     <!-- Base application theme. -->
     <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/colorSelect</item>
+        <item name="android:colorBackground">@color/colorPrimaryDark</item>
+        <item name="android:colorForeground">@color/colorSelect</item>
+        <item name="android:textColorPrimaryInverse">@android:color/black</item>
+        <item name="android:textColorSecondary">@color/colorSelect</item>
+        <item name="android:textColorSecondaryInverse">@android:color/black</item>
+        <item name="android:tabWidgetStyle">@android:style/Widget.TabWidget</item>
+    </style>
     <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">true</item>
+        <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:actionBarSplitStyle">@color/colorAccent</item>
@@ -11,18 +23,6 @@
 
     </style>
 
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:tabWidgetStyle">@android:style/Widget.TabWidget</item>
-        <item name="android:textColorPrimary">@color/colorSelect</item>
-        <item name="android:colorBackground">@color/colorPrimaryDark</item>
-        <item name="android:colorForeground">@color/colorSelect</item>
-        <item name="android:textColorPrimaryInverse">@android:color/black</item>
-        <item name="android:textColorSecondary">@color/colorSelect</item>
-        <item name="android:textColorSecondaryInverse">@android:color/black</item>
-    </style>
 
     <style name="DialogAppTheme" parent="AppTheme">
         <item name="android:background">@color/colorPrimaryDark</item>
@@ -86,6 +86,7 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/textSizeN</item>
     </style>
 
     <style name="ButtonAuth">
@@ -97,27 +98,10 @@
 
     </style>
 
-    <style name="AppThemeP" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@color/colorSelect</item>
-        <item name="android:windowBackground">@color/colorPrimaryDark</item>
-        <item name="android:colorBackground">@color/colorPrimaryDark</item>
-        <item name="android:colorForeground">@color/colorSelect</item>
-        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
-        <item name="android:textColorPrimaryInverse">@color/colorPrimaryDark</item>
-        <item name="android:textColorSecondary">@color/colorSelect</item>
-        <item name="android:textColorSecondaryInverse">@android:color/black</item>
-    </style>
-
     <style name="gridItemView">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

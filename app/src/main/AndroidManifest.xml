@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="miguel.chatgo">
+    package="miguel.chatgo"
+    >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -20,12 +21,10 @@
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="6V7fP7Adqw0JBbaKdLjcXdKnxY4pg2vvvvmSiVJy" />
-        <activity
-            android:name=".MainActivity"
+        <activity android:name=".MainActivity"
             android:theme="@style/AppTheme" />
         <activity android:name=".LoginActivity" />
-        <activity
-            android:name=".SignUpActivity"
+        <activity android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up"
             android:parentActivityName=".LoginActivity"
             android:screenOrientation="portrait"
@@ -34,8 +33,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="miguel.chatgo.LoginActivity" />
         </activity>
-        <activity
-            android:name=".EditFriendsActivity"
+        <activity android:name=".EditFriendsActivity"
             android:label="@string/title_activity_edit_friends"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
@@ -44,19 +42,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="miguel.chatgo.MainActivity" />
         </activity>
-        <activity
-            android:name=".RecipientsActivity"
+        <activity android:name=".RecipientsActivity"
             android:label="@string/title_activity_recipients"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="miguel.chatgo.MainActivity" />
         </activity>
-        <activity
-            android:name=".SplashActivity"
-            android:label="@string/title_activity_splash"
+        <activity android:name=".SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,9 +59,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ViewImageActivity"
+        <activity android:name=".ViewImageActivity"
             android:screenOrientation="portrait" />
     </application>
-
 </manifest>

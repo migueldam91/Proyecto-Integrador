@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="miguel.chatgo.RecipientsActivity">
+    tools:context="miguel.chatgo.RecipientsActivity"
+    android:theme="@style/AppTheme">
 
 
 
@@ -17,7 +18,8 @@
         android:id="@+id/recipientsList"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:divider="@color/colorAccent" />
 
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"

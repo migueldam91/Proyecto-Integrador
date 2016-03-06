@@ -2,8 +2,6 @@
 
     <!-- Base application theme. -->
     <!-- Customize your theme here. -->
-
-
     <style name="AppTheme" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
@@ -88,6 +86,7 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/textSizeN</item>
     </style>
 
     <style name="ButtonAuth">
@@ -99,19 +98,6 @@
 
     </style>
 
-    <style name="AppThemeP" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@color/colorSelect</item>
-        <item name="android:windowBackground">@color/colorPrimaryDark</item>
-        <item name="android:colorBackground">@color/colorPrimaryDark</item>
-        <item name="android:colorForeground">@color/colorSelect</item>
-        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
-        <item name="android:textColorPrimaryInverse">@color/colorPrimaryDark</item>
-        <item name="android:textColorSecondary">@color/colorSelect</item>
-        <item name="android:textColorSecondaryInverse">@android:color/black</item>
-    </style>
     <!--<item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
     <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>-->
     <style name="gridItemView">

@@ -1,6 +1,7 @@
 <resources>
     <!-- Titles -->
-    <string name="app_name">Gochat</string>
+    <string name="app_name">Chat&amp;Go</string>
+    <string name="app_title">Chat&amp;Go</string>
     <string name="app_subtitle">lorem ipsum</string>
     <string name="signupTitle">Sign Up</string>
     <string name="signupSubtitle">Step one/one</string>

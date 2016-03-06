@@ -61,7 +61,6 @@ public class RecipientsActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Falta por meter el nombre del objeto del list en el arrayList
                 if (mListView.getCheckedItemCount() != 0)
                     mSendMenuItem.setVisible(true);
                 else
