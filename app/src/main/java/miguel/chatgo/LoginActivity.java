@@ -68,7 +68,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
             });
-            //ParseUser.logIn(usernameField.getText().toString(), passwordField.getText().toString());
             return true;
         }else{
             generarDialogo("Introduce los campos").show();

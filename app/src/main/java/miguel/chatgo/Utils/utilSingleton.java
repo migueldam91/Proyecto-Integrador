@@ -1,13 +1,16 @@
 package miguel.chatgo.Utils;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 
 import com.parse.ParseUser;
 
 import java.util.List;
 
+import miguel.chatgo.MainActivity;
 import miguel.chatgo.R;
 
 /**
@@ -44,4 +47,18 @@ public class utilSingleton {
         AlertDialog dialog = builder.create();
         return dialog;
     }
+
+    public  android.support.v7.app.AlertDialog dialogCameraChoices(Context context,DialogInterface.OnClickListener mDialogListener) {
+        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(
+                new ContextThemeWrapper(context,R.style.DialogAppTheme));
+        String[] options = context.getResources().getStringArray(R.array.camera_choices);
+        builder.setTitle(R.string.menu_choose_option_label)
+                .setItems(options, mDialogListener)
+                .setPositiveButton(android.R.string.ok, null)
+        ;
+        android.support.v7.app.AlertDialog dialog = builder.create();
+
+        return dialog;
+    }
+
 }

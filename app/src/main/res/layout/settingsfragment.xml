@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="miguel.chatgo.MainActivity">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/button_custom"
+        android:padding="10dp"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:id="@+id/exitField"
+            android:layout_weight="0.5"
+            android:drawableStart="@drawable/out"
+            android:drawableLeft="@drawable/out"
+            android:text="Salir"
+            android:textSize="@dimen/textSizeL"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@drawable/button_custom"
+             />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="¿Quienes somos?"
+            android:id="@+id/whoField"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@android:drawable/ic_menu_help"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/textSizeL"
+            android:layout_weight="0.5"
+            />
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

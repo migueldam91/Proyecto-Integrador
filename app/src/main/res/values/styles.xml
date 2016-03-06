@@ -2,31 +2,50 @@
 
     <!-- Base application theme. -->
     <!-- Customize your theme here. -->
-
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:tabWidgetStyle">@android:style/Widget.TabWidget</item>
         <item name="android:textColorPrimary">@color/colorSelect</item>
         <item name="android:colorBackground">@color/colorPrimaryDark</item>
         <item name="android:colorForeground">@color/colorSelect</item>
         <item name="android:textColorPrimaryInverse">@android:color/black</item>
         <item name="android:textColorSecondary">@color/colorSelect</item>
         <item name="android:textColorSecondaryInverse">@android:color/black</item>
+        <item name="android:tabWidgetStyle">@android:style/Widget.TabWidget</item>
     </style>
+<<<<<<< HEAD
     <style name="AppTheme.NoActionBar" parent="AppTheme">
         <item name="windowActionBar">true</item>
+||||||| merged common ancestors
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">true</item>
+=======
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+>>>>>>> DesignerLayout
         <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
         <item name="android:actionBarSplitStyle">@color/colorAccent</item>
         <item name="actionOverflowButtonStyle">@color/colorDivider</item>
     </style>
+
+    <style name="DialogAppTheme" parent="AppTheme">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:positiveButtonText">@color/colorPrimary20</item>
+        <item name="android:colorBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppThemeTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
     <style name="listElements">
-        <item name="android:layout_alignParentRight">true</item>
-        <item name="android:layout_alignParentLeft">true</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <style name="AuthFieldContainer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -41,6 +60,7 @@
         <item name="android:paddingTop">@dimen/loginVerticalPadding</item>
         <item name="android:paddingBottom">@dimen/loginVerticalPadding</item>
     </style>
+
     <style name="titles">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">60sp</item>
@@ -50,11 +70,13 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_marginTop">32dp</item>
     </style>
+
     <style name="EditTextAuthFieldContainer">
         <item name="android:textColor">@color/colorPrimary20</item>
         <item name="android:textColorHint">@color/colorPrimaryDark</item>
         <item name="android:gravity">center</item>
     </style>
+
 
     <style name="authLayoutContainer">
         <item name="android:layout_width">wrap_content</item>
@@ -73,6 +95,7 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/textSizeN</item>
     </style>
 
     <style name="ButtonAuth">
@@ -87,6 +110,16 @@
     <style name="gridItemView">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="FloatingActionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginBottom">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
     </style>
 
 

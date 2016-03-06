@@ -1,6 +1,7 @@
 <resources>
     <!-- Titles -->
-    <string name="app_name">Gochat</string>
+    <string name="app_name">Chat&amp;Go</string>
+    <string name="app_title">Chat&amp;Go</string>
     <string name="app_subtitle">lorem ipsum</string>
     <string name="signupTitle">Sign Up</string>
     <string name="signupSubtitle">Step one/one</string>
@@ -16,8 +17,9 @@
     <!-- Valores de tabs -->
     <string name="title_messages_tab">Mensajes</string>
     <string name="title_friends_tab">Amigos</string>
+    <string name="title_settings_tab">Opciones</string>
 
-    <string name="empty_Inbox_Label">No hay nuevos mensajes.. AÑADIR PERRITO TRISTE</string>
+    <string name="empty_Inbox_Label">No hay mensajes nuevos..</string>
     <string name="empty_Friends_Label">Añade amigos para empezar</string>
 
 
@@ -59,5 +61,10 @@
     <string name="buttonCancel">Cancelar</string>
     <string name="facebook_app_id">Perrito</string>
     <string name="content_desc_message_icon">Message icon</string>
+<<<<<<< HEAD
     <string name="welcomeSplash">Welcolme</string>
+||||||| merged common ancestors
+=======
+    <string name="welcomeText">Welcome</string>
+>>>>>>> DesignerLayout
 </resources>
