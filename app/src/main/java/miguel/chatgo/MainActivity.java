@@ -85,9 +85,9 @@ public class MainActivity extends AppCompatActivity {
             tab.setCustomView(mSectionsPagerAdapter.getTabView(i));
         }
 
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle("");
-        setSupportActionBar(mToolbar);
+//        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+//        mToolbar.setTitle("");
+//        setSupportActionBar(mToolbar);
 
         if (loggedUser == null) {
             Intent intent = new Intent(this, LoginActivity.class);

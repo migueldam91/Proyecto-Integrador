@@ -7,7 +7,7 @@
     android:layout_marginLeft="@dimen/inbox_horizontal_margin"
     android:layout_marginRight="@dimen/inbox_horizontal_margin"
     android:layout_marginTop="@dimen/inbox_vertical_margin"
-    android:background="@color/light_purple_background">
+    android:background="@color/colorSelect">
 
 
     <LinearLayout

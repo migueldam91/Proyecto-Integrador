@@ -18,21 +18,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical|center_horizontal"
-            android:text="New Text"
             android:id="@+id/exitField"
-            android:layout_gravity="center_horizontal"
             android:layout_weight="0.5"
-            android:background="@drawable/textview_border"
-            android:onClick=""
+            android:drawableStart="@drawable/out"
+            android:drawableLeft="@drawable/out"
+            android:text="Salir"
+            android:textSize="@dimen/textSizeL"
+            android:textColor="@color/colorPrimaryDark"
+            android:background="@drawable/button_custom"
              />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical|center_horizontal"
-            android:text="New Text"
-            android:id="@+id/textView3"
+            android:text="¿Quienes somos?"
+            android:id="@+id/whoField"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/textview_border"
-            android:layout_weight="0.5"/>
+            android:drawableLeft="@android:drawable/ic_menu_help"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/textSizeL"
+            android:layout_weight="0.5"
+            />
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -31,7 +31,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private int[] imageResId = {
             R.drawable.ic_tab_inbox,
             R.drawable.ic_tab_friends,
-            android.R.drawable.ic_menu_help
+            R.drawable.ic_more_vert_24dp
     };
     public SectionsPagerAdapter(Context context,FragmentManager fm) {
         super(fm);

@@ -7,13 +7,13 @@
     <color name="colorPrimary">#200400</color>
     <color name="colorPrimary20">#200400</color>
     <color name="colorPrimaryDark">#0E0908</color>
-    <color name="light_purple_background">#e9e4ed</color>
     <color name="colorPrimaryLight">#A9632F</color>
     <color name="colorAccent">#F39541</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#727272</color>
     <color name="colorDivider">#B6B6B6</color>
     <color name="colorSelect">#ECDECF</color>
+    <color name="colorSelectII">#ECDEBC</color>
     <color name="colorBackground">#ffffff</color>
     <color name="foreground_material_light">#ffffff</color>
 

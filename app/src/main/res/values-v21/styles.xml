@@ -98,8 +98,16 @@
 
     </style>
 
-    <!--<item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
-    <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>-->
+    <style name="FloatingActionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_marginBottom">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
+    </style>
     <style name="gridItemView">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:gravity">center</item>
