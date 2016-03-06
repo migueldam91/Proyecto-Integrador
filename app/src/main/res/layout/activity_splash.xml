@@ -21,42 +21,15 @@
 
         <TextView
             android:layout_width="match_parent"
-<<<<<<< HEAD
-            android:layout_height="0dip"
-            android:layout_weight="0.25"
-            android:text="@string/welcomeSplash"
-||||||| merged common ancestors
-            android:layout_height="0dip"
-            android:layout_weight="0.25"
-            android:text="Welcolme"
-=======
             android:layout_height="wrap_content"
-            android:text="@string/welcomeText"
->>>>>>> DesignerLayout
-            android:gravity="center|center_horizontal"
-            android:textColor="#f8faff"
-            android:visibility="invisible"
-            android:id="@+id/welcomeTextview"
-<<<<<<< HEAD
-            android:textSize="25sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="0.75" />
-||||||| merged common ancestors
-            android:textSize="25dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="0.75" />
-=======
+            android:layout_weight="0.25"
+            android:id="@+id/welcomeLabel"
+            android:text="@string/welcomeSplash"
             android:textSize="25sp"
+            android:gravity="center"
             android:layout_below="@+id/imageView"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:layout_centerHorizontal="true" />
->>>>>>> DesignerLayout
+            android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>

@@ -20,7 +20,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         final ImageView iv = (ImageView) findViewById(R.id.imageView);
-        final TextView tv = (TextView) findViewById(R.id.welcomeTextview);
+        final TextView tv = (TextView) findViewById(R.id.welcomeLabel);
         Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "Lighthouse_PersonalUse.ttf");
         tv.setTypeface(font);
         final Animation an = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);

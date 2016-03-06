@@ -61,11 +61,6 @@
     <string name="buttonCancel">Cancelar</string>
     <string name="facebook_app_id">Perrito</string>
     <string name="content_desc_message_icon">Message icon</string>
-<<<<<<< HEAD
-    <string name="welcomeSplash">Welcolme</string>
-||||||| merged common ancestors
-=======
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="welcomeText">Welcome</string>
->>>>>>> DesignerLayout
+
+
 </resources>
