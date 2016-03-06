@@ -30,7 +30,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private String[] tabTitles;
     private int[] imageResId = {
             R.drawable.ic_tab_inbox,
-            R.drawable.ic_tab_friends
+            R.drawable.ic_tab_friends,
+            android.R.drawable.ic_menu_help
     };
     public SectionsPagerAdapter(Context context,FragmentManager fm) {
         super(fm);
@@ -38,7 +39,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         resources=context.getResources();
         tabTitles= new String[]{
                 resources.getString(R.string.title_messages_tab),
-                resources.getString(R.string.title_friends_tab)
+                resources.getString(R.string.title_friends_tab),
+                resources.getString(R.string.title_settings_tab)
         };
     }
 
@@ -51,6 +53,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return new InboxFragment();
             case 1:
                 return new FriendsFragment();
+            case 2:
+                return new SettingsFragment();
             default:
                 return null;
         }
@@ -59,26 +63,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 2 total pages.
-        return 2;
+        return 3;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
 
-        /*switch (position) {
-            case 0:
-                return resources.getString(R.string.title_messages_tab);
-            case 1:
-                return resources.getString(R.string.title_friends_tab);
-        }
-        return null;*/
-        Drawable image = ContextCompat.getDrawable(mContext, imageResId[position]);
-        image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
-        // Replace blank spaces with image icon
-        SpannableString sb = new SpannableString(tabTitles[position]);
-        ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BOTTOM);
-        sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_COMPOSING);
-        return sb;
+        return null;
     }
     public View getTabView(int position) {
         // Given you have a custom layout in `res/layout/custom_tab.xml` with a TextView and ImageView

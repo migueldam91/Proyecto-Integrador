@@ -17,6 +17,7 @@
     <!-- Valores de tabs -->
     <string name="title_messages_tab">Mensajes</string>
     <string name="title_friends_tab">Amigos</string>
+    <string name="title_settings_tab">Opciones</string>
 
     <string name="empty_Inbox_Label">No hay mensajes nuevos..</string>
     <string name="empty_Friends_Label">Añade amigos para empezar</string>

@@ -78,11 +78,13 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
+
         mTabLayout.setupWithViewPager(mViewPager);
         for (int i = 0; i < mTabLayout.getTabCount(); i++) {
             TabLayout.Tab tab = mTabLayout.getTabAt(i);
             tab.setCustomView(mSectionsPagerAdapter.getTabView(i));
         }
+
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setTitle("");
         setSupportActionBar(mToolbar);
@@ -119,10 +121,10 @@ public class MainActivity extends AppCompatActivity {
 
         switch (id) {
             case R.id.logOut:
-                ParseUser.logOut();
+                /*ParseUser.logOut();
                 Intent logOutIntent = new Intent(MainActivity.this, LoginActivity.class);
                 logOutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(logOutIntent);
+                startActivity(logOutIntent);*/
                 return true;
 /*            case R.id.openFriendsActivity:
                 Intent editFriendsIntent = new Intent(MainActivity.this, EditFriendsActivity.class);

@@ -15,6 +15,7 @@
     <string name="title_activity_sign_up">SignUpActivity</string>
 
     <!-- Valores de tabs -->
+    <string name="title_settings_tab">Opciones</string>
     <string name="title_messages_tab">Mensajes</string>
     <string name="title_friends_tab">Amigos</string>
 
