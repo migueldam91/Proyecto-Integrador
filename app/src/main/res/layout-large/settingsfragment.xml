@@ -19,7 +19,7 @@
             android:drawableStart="@drawable/out"
             android:drawableLeft="@drawable/out"
             android:text="@string/labelExit"
-            android:textSize="@dimen/textSizeL"
+            android:textSize="58sp"
             style="@style/settingsLabel"
             android:layout_weight="0.5"
             android:clickable="true"/>
@@ -28,7 +28,7 @@
             android:drawableStart="@android:drawable/ic_menu_help"
             android:drawableLeft="@android:drawable/ic_menu_help"
             android:text="@string/whoField"
-            android:textSize="@dimen/textSizeL"
+            android:textSize="58sp"
             style="@style/whoLabel"
             android:layout_weight="0.5"
             android:clickable="true"/>

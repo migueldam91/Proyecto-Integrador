@@ -61,6 +61,8 @@
     <string name="buttonCancel">Cancelar</string>
     <string name="facebook_app_id">Perrito</string>
     <string name="content_desc_message_icon">Message icon</string>
+    <string name="labelExit">Salir</string>
+    <string name="whoField">¿Quienes somos?</string>
 
 
 </resources>

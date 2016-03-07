@@ -3,6 +3,7 @@ package miguel.chatgo;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -38,7 +39,12 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
             }
         });
         setFuente();
-
+        mWhoField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                verPerfil("https://github.com/migueldam91/Proyecto-Integrador/wiki");
+            }
+        });
         return rootView;
     }
 
@@ -52,6 +58,14 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
         Intent logOutIntent = new Intent(mContext, LoginActivity.class);
         logOutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(logOutIntent);
+    }
+
+    public void verPerfil(String url){
+        Uri webpage= Uri.parse(url);
+        Intent profileIntent = new Intent(Intent.ACTION_VIEW,webpage);
+        if (profileIntent.resolveActivity(mContext.getPackageManager())!= null) {
+            startActivity(profileIntent);
+        }
     }
 
     private void setFuente() {
