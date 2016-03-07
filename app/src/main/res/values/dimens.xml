@@ -20,6 +20,6 @@
 
 
     <!-- HLDPI screens-->
-    <dimen name="textSizeL">26sp</dimen>
+    <dimen name="textSizeL">28sp</dimen>
     <dimen name="tabsHeight">48dp</dimen>
 </resources>

@@ -36,6 +36,10 @@
     <style name="listElements">
         <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
+    <style name="listElementsLarge">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">32sp</item>
+    </style>
 
     <style name="AuthFieldContainer">
         <item name="android:layout_width">match_parent</item>

@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:paddingLeft="150dp"
         android:paddingRight="150dp"
-        android:id="@+id/relativeLayout4">
+        android:id="@+id/headLayout">
 
         <TextView
             style="@style/titles"
@@ -38,10 +38,10 @@
         android:id="@+id/authLayoutContainer"
         style="@style/authLayoutContainer"
         android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/relativeLayout4"
-        android:layout_alignEnd="@+id/relativeLayout4"
-        android:layout_alignLeft="@+id/relativeLayout4"
-        android:layout_alignStart="@+id/relativeLayout4">
+        android:layout_alignRight="@+id/headLayout"
+        android:layout_alignEnd="@+id/headLayout"
+        android:layout_alignLeft="@+id/headLayout"
+        android:layout_alignStart="@+id/headLayout">
         <LinearLayout
             style="@style/AuthFieldContainer"
             android:orientation="vertical"
@@ -95,7 +95,7 @@
         <Button
             style="@style/ButtonAuth"
             android:text="@string/sign_up_button_label"
-            android:id="@+id/actionButton"
+            android:id="@+id/signupButton"
             android:onClick="registrarse"
             android:layout_toRightOf="@id/buttonDivider"
             android:layout_toEndOf="@id/buttonDivider"

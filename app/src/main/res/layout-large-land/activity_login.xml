@@ -76,7 +76,7 @@
         <Button
             style="@style/ButtonAuth"
             android:text="@string/Login_button_label"
-            android:id="@+id/actionButton"
+            android:id="@+id/loginButton"
             android:onClick="logearse"
             android:layout_below="@+id/authLayout"
             android:layout_alignRight="@+id/authLayout"

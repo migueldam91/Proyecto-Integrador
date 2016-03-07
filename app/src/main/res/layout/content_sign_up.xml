@@ -76,7 +76,7 @@
     <Button
         style="@style/ButtonAuth"
         android:text="@string/sign_up_button_label"
-        android:id="@+id/actionButton"
+        android:id="@+id/signupButton"
         android:onClick="registrarse"
         android:layout_toRightOf="@id/buttonDivider"
         android:layout_toEndOf="@id/buttonDivider"

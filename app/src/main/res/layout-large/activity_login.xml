@@ -73,7 +73,7 @@
         <Button
             style="@style/ButtonAuth"
             android:text="@string/Login_button_label"
-            android:id="@+id/actionButton"
+            android:id="@+id/loginButton"
             android:onClick="logearse"
             android:textSize="20sp"
             android:layout_below="@+id/authLayout"

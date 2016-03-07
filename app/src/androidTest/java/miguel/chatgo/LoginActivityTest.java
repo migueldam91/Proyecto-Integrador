@@ -36,7 +36,7 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
         loginActivity=getActivity();
         usernameField = (EditText) loginActivity.findViewById(R.id.usernameField);
         passwordField = (EditText) loginActivity.findViewById(R.id.passwordField);
-        btnlogin = (Button) loginActivity.findViewById(R.id.actionButton);
+        btnlogin = (Button) loginActivity.findViewById(R.id.loginButton);
     }
 
     public void tearDown() throws Exception {
